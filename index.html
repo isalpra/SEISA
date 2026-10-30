@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seisa</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+   
+     <link rel="stylesheet" href="css/style.css">
+
+     <style type="text/tailwindcss">
+        /* Modo oscuro con la clase .dark en <html> (la pone el JavaScript) */
+        @custom-variant dark (&:where(.dark, .dark *));
+
+        @theme static {
+            /* Colores del modo claro. Los del modo oscuro están en css/styles.css */
+            --color-fondo: #;
+            --color-superficie: #;
+            --color-texto: #;
+            --color-suave: #;
+            --color-acento: #;
+            --color-borde: #;
+            --color-fondo: #f4ecdc;
+            --color-texto: #2a1a10;
+            --color-acento: #93362a;
+
+            --font-rotulo: "Fraunces", Georgia, serif;
+            --font-texto: "Work Sans", system-ui, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-fondo text-texto">
+    <header class="">
+        <nav class="" >
+         
+        </nav>
+    </header>
+   <main>
+    <h1>PRUEBA</h1>
+    <button id="boton-tema">Dark</button>
+   </main>
+   <footer>
+
+   </footer>
+   <!-- ===== NUESTRO JAVASCRIPT ===== -->
+    <script src="js/script.js"></script>
+   
+</body>
+</html>
