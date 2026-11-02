@@ -71,7 +71,7 @@
 
         <!-- Tarjeta 1: Percutida -->
         <article class="tarjeta-categoria absolute inset-3 md:inset-6 grid grid-rows-2 md:grid-rows-1 md:grid-cols-2
-                        overflow-hidden rounded-3xl bg-acento text-fondo shadow-2xl">
+                        overflow-hidden rounded-3xl bg-acento text-fondo ">
             <div class="flex flex-col items-start justify-center gap-6 p-6 md:p-12 order-2 md:order-1">
             <h3 class="font-rotulo text-5xl uppercase md:text-7xl">Percutida</h3>
             <a href="percutida.html"
@@ -92,7 +92,7 @@
 
         <!-- Tarjeta 2: Frotada -->
         <article class="tarjeta-categoria absolute inset-3 md:inset-6 grid grid-rows-2 md:grid-rows-1 md:grid-cols-2
-                        overflow-hidden rounded-3xl bg-texto text-fondo shadow-2xl">
+                        overflow-hidden rounded-3xl bg-texto text-fondo ">
             <div class="flex flex-col items-start justify-center gap-6 p-6 md:p-12 order-2 md:order-1">
             <h3 class="font-rotulo text-5xl uppercase md:text-7xl">Frotada</h3>
             <a href="frotada.html"
@@ -113,7 +113,7 @@
 
         <!-- Tarjeta 3: Pulsada -->
         <article class="tarjeta-categoria absolute inset-3 md:inset-6 grid grid-rows-2 md:grid-rows-1 md:grid-cols-2
-                        overflow-hidden rounded-3xl bg-acento text-fondo shadow-2xl">
+                        overflow-hidden rounded-3xl bg-acento text-fondo ">
             <div class="flex flex-col items-start justify-center gap-6 p-6 md:p-12 order-2 md:order-1">
             <h3 class="font-rotulo text-5xl uppercase md:text-7xl">Pulsada</h3>
             <a href="pulsada.html"
@@ -132,8 +132,116 @@
                 class="order-1 md:order-2 h-full w-full object-cover">
         </article>
     </section>
-    <section id="información" class="min-h-screen">
+    <section id="informacion" aria-labelledby="titulo-informacion"
+         class="px-4 py-16 md:px-8 md:py-24 lg:px-12">
+        <h2 id="titulo-informacion"
+            class="mb-12 text-center font-rotulo text-3xl uppercase md:mb-16 md:text-5xl">
+            Información
+        </h2>
 
+        
+        <div class="mx-auto flex  flex-col gap-12 md:flex-row md:justify-between md:gap-0">
+
+            <!-- HORARIO -->
+            <div class="flex flex-col md:w-1/4" data-aos="fade-up">
+            <h3 class="mb-8 text-center font-texto font-semibold">Horario</h3>
+
+            <div class="flex flex-1 flex-col justify-between gap-8">
+                <div>
+                <div class="flex items-center gap-4 font-texto font-semibold">
+                    <span>Lunes</span>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto"></span>
+                    <span>Sábado</span>
+                </div>
+                <hr class="my-4 border-t-2 border-texto">
+                <p class="flex items-center gap-4 font-texto">
+                    <time datetime="10:00">10:00</time>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto/60"></span>
+                    <time datetime="14:00">14:00</time>
+                </p>
+                <p class="mt-2 flex items-center gap-4 font-texto">
+                    <time datetime="16:00">16:00</time>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto/60"></span>
+                    <time datetime="20:00">20:00</time>
+                </p>
+                </div>
+
+                <div>
+                <div class="flex items-center gap-4 font-texto font-semibold">
+                    <span>Domingos</span>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto"></span>
+                    <span>Festivos</span>
+                </div>
+                <hr class="my-4 border-t-2 border-texto">
+                <p class="flex items-center gap-4 font-texto">
+                    <time datetime="09:00">09:00</time>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto/60"></span>
+                    <time datetime="14:00">14:00</time>
+                </p>
+                </div>
+            </div>
+            </div>
+
+            <!-- UBICACIÓN -->
+            <div class="flex flex-col gap-6 md:w-1/3" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="sr-only">Ubicación</h3>
+            <img src="img/ubicacion.jpg" alt="Fachada de la tienda Seisa"
+                class="min-h-64 w-full flex-1 object-cover">
+            <address class="text-center font-texto font-semibold not-italic">
+                Av. Teresa de Calcuta, s/n, 28903 Getafe, Madrid
+            </address>
+            </div>
+
+            <!-- CONTACTO -->
+            <div class="flex flex-col md:w-1/4">
+            <h3 class="mb-8 text-center font-texto font-semibold">Contacto</h3>
+
+            <form id="formulario-contacto" class="flex flex-1 flex-col justify-between gap-8">
+                <div class="flex flex-col gap-8">
+                <div>
+                    <label for="nombre" class="block font-texto font-semibold">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" required autocomplete="name"
+                        placeholder="Escribe aquí"
+                        class="w-full border-b border-texto bg-transparent py-2 font-texto
+                                placeholder:text-texto/60
+                                focus-visible:border-acento focus-visible:outline-none">
+                </div>
+
+                <div>
+                    <label for="correo" class="block font-texto font-semibold">Correo electrónico</label>
+                    <input id="correo" name="correo" type="email" required autocomplete="email"
+                        placeholder="Escribe aquí"
+                        class="w-full border-b border-texto bg-transparent py-2 font-texto
+                                placeholder:text-texto/60
+                                focus-visible:border-acento focus-visible:outline-none">
+                </div>
+
+                <div>
+                    <label for="mensaje" class="block font-texto font-semibold">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="3" required
+                            placeholder="Escribe aquí"
+                            class="w-full resize-none border-b border-texto bg-transparent py-2 font-texto
+                                    placeholder:text-texto/60
+                                    focus-visible:border-acento focus-visible:outline-none"></textarea>
+                </div>
+                </div>
+
+                <div class="flex flex-col items-center gap-2">
+                <button type="submit"
+                        class="rounded-full border-2 border-texto px-8 py-2 font-texto font-semibold
+                                transition duration-300
+                                hover:-translate-y-1 hover:bg-texto hover:text-fondo
+                                focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-acento
+                                dark:border-acento dark:hover:bg-acento dark:hover:text-texto">
+                    Enviar
+                </button>
+                <p id="estado-formulario" role="status" aria-live="polite"
+                    class="text-center font-texto text-sm"></p>
+                </div>
+            </form>
+            </div>
+
+        </div>
     </section>
    </main>
    <footer>

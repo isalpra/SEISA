@@ -91,3 +91,17 @@ ScrollTrigger.create({
   scrub: 0.6,
   invalidateOnRefresh: true
 });
+
+
+// ===== Formulario de contacto =====
+const formulario = document.querySelector('#formulario-contacto');
+const estadoFormulario = document.querySelector('#estado-formulario');
+
+if (formulario) {
+  formulario.addEventListener('submit', function (evento) {
+    evento.preventDefault();
+    const nombre = formulario.nombre.value.trim();
+    estadoFormulario.textContent = 'Gracias, ' + nombre + '. Hemos recibido tu mensaje.';
+    formulario.reset();
+  });
+}
