@@ -30,6 +30,22 @@
 
 
 @layer components {
-    
-    
+    .menu-desplegable {
+        animation: desplegar 0.25s ease-out;
+        transform-origin: top;
+    }
+
+    .menu-desplegable.cerrando {
+        animation: plegar 0.25s ease-in forwards;
+    }
+}
+
+@keyframes desplegar {
+  from { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
+  to   { opacity: 1; transform: scaleY(1) translateY(0); }
+}
+
+@keyframes plegar {
+  from { opacity: 1; transform: scaleY(1) translateY(0); }
+  to   { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
 }
