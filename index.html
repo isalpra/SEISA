@@ -25,9 +25,36 @@
     </style>
 </head>
 <body class="bg-fondo text-texto">
-    <header class="">
-        <nav class="" >
-         
+    <header class="relative bg-fondo border-b border-texto/20">
+        <nav aria-label="Navegación principal"
+            class="mx-auto flex  items-center justify-between px-4 py-3">
+
+            <!-- Logo: la altura es fija y el ancho se adapta a la proporción de la imagen -->
+            <a href="#portada" class="flex items-center focus:outline-2 focus:outline-acento">
+            <img src="img/logo.png" alt="Seisa, inicio"
+                class="h-10 w-auto object-contain md:h-14">
+            </a>
+
+            <!-- Botón con imagen (solo móvil) -->
+            <button id="boton-menu" type="button"
+                    aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"
+                    class="flex h-12 w-12 items-center justify-center rounded-lg p-1
+                        hover:bg-acento/20 focus:outline-none focus:outline-acento md:hidden">
+            <img src="img/menu.png" alt="" class="h-full w-full object-contain">
+            </button>
+
+            <!-- Enlaces: desplegable en móvil, fila horizontal desde md -->
+            <ul id="menu-principal"
+                class="menu-desplegable hidden absolute left-0 right-0 top-full z-50
+                    flex-col gap-1 border-b border-texto/20 bg-fondo p-4
+                    md:static md:flex md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0 md:animate-none">
+            <li><a href="#novedades"
+                    class="block rounded px-3 py-2 font-texto hover:text-acento focus:outline-2 focus:outline-acento">Novedades</a></li>
+            <li><a href="#categorias"
+                    class="block rounded px-3 py-2 font-texto hover:text-acento focus:outline-2 focus:outline-acento">Categorías</a></li>
+            <li><a href="#informacion"
+                    class="block rounded px-3 py-2 font-texto hover:text-acento focus:outline-2 focus:outline-acento">Información</a></li>
+            </ul>
         </nav>
     </header>
    <main>
