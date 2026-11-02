@@ -1,0 +1,35 @@
+
+@layer theme, base, components, utilities;
+
+
+/* Los selectores o estilos de etiquetas (tag), en "base" */
+
+@layer base{
+    body{
+
+    }
+
+    a{
+
+    }
+    
+    h1{
+        
+    }
+
+}
+
+@layer base {
+    .dark {
+    --color-fondo: #5a008f;
+    --color-texto: #f2e8d3;
+    --color-acento: #f0c285;
+    }
+}
+/* Los selectores por clase (.class), en "components" */
+
+
+@layer components {
+    
+    
+}
