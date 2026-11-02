@@ -74,7 +74,7 @@ const PAUSA = 2;
 const TRANSICION = 1;         
 const PANTALLAS_POR_UNIDAD = 0.6; 
 
-gsap.set(tarjetas.slice(1), { yPercent: 100 });
+gsap.set(tarjetas.slice(1), { y: () => window.innerHeight });
 
 const lineaTiempo = gsap.timeline({ defaults: { ease: 'none' } });
 
@@ -82,7 +82,7 @@ tarjetas.slice(1).forEach(function (tarjeta, i) {
   const inicio = i * (PAUSA + TRANSICION) + PAUSA;
   lineaTiempo
     .to(tarjetas[i], { scale: 0.94, duration: TRANSICION }, inicio)
-    .to(tarjeta, { yPercent: 0, duration: TRANSICION }, inicio);
+    .to(tarjeta, { y: 0, duration: TRANSICION }, inicio);
 });
 
 lineaTiempo.to({}, { duration: PAUSA });
