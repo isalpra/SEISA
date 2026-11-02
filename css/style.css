@@ -38,7 +38,38 @@
     .menu-desplegable.cerrando {
         animation: plegar 0.25s ease-in forwards;
     }
+
+    .boton-categoria {
+      background-image: linear-gradient(var(--color-fondo), var(--color-fondo));
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 0% 100%;
+      transition: background-size 0.35s ease, color 0.35s ease, transform 0.25s ease;
+    }
+    
+    .boton-categoria:hover,
+    .boton-categoria:focus-visible {
+      background-size: 100% 100%;
+      color: var(--color-texto);
+      transform: translateY(-3px);
+    }
+    
+    .boton-categoria:active {
+      transform: translateY(0);
+    }
+    
+    .boton-categoria .flecha {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    
+    .boton-categoria:hover .flecha,
+    .boton-categoria:focus-visible .flecha {
+      transform: translateX(0.4rem);
+    }
+    
 }
+
 
 @keyframes desplegar {
   from { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
@@ -49,3 +80,5 @@
   from { opacity: 1; transform: scaleY(1) translateY(0); }
   to   { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
 }
+
+

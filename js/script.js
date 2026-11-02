@@ -55,3 +55,39 @@ menu.querySelectorAll('a').forEach(function (enlace) {
 
 // ===== AOS (animaciones al hacer scroll) =====
 AOS.init();
+
+
+
+// ===== Tarjetas apiladas con GSAP + ScrollTrigger =====
+gsap.registerPlugin(ScrollTrigger);
+
+const tarjetas = gsap.utils.toArray('.tarjeta-categoria');
+
+const PAUSA = 2;              // tiempo con la tarjeta quieta antes de que entre la siguiente
+const TRANSICION = 1;         // tiempo que tarda en subir la siguiente
+const PANTALLAS_POR_UNIDAD = 0.6; // pantallas de scroll por cada unidad de tiempo
+
+// La 2ª y la 3ª empiezan fuera de pantalla, por debajo
+gsap.set(tarjetas.slice(1), { yPercent: 100 });
+
+const lineaTiempo = gsap.timeline({ defaults: { ease: 'none' } });
+
+tarjetas.slice(1).forEach(function (tarjeta, i) {
+  const inicio = i * (PAUSA + TRANSICION) + PAUSA;
+  lineaTiempo
+    .to(tarjetas[i], { scale: 0.94, duration: TRANSICION }, inicio)
+    .to(tarjeta, { yPercent: 0, duration: TRANSICION }, inicio);
+});
+
+// Pausa final para ver la última tarjeta antes de soltar el pin
+lineaTiempo.to({}, { duration: PAUSA });
+
+ScrollTrigger.create({
+  animation: lineaTiempo,
+  trigger: '#categorias',
+  start: 'top top',
+  end: () => '+=' + window.innerHeight * PANTALLAS_POR_UNIDAD * lineaTiempo.duration(),
+  pin: true,
+  scrub: 0.6,
+  invalidateOnRefresh: true
+});
