@@ -2,17 +2,24 @@
 const raiz = document.documentElement; // <html>
 const botonTema = document.querySelector('#boton-tema');
 
-// Al cargar: ¿eligió oscuro la última vez?
+function actualizarBotonTema() {
+  const oscuro = raiz.classList.contains('dark');
+  if (botonTema) {
+    botonTema.setAttribute('aria-pressed', oscuro);
+    botonTema.setAttribute('aria-label', oscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+  }
+}
+
 if (localStorage.getItem('tema') === 'oscuro') {
   raiz.classList.add('dark');
 }
+actualizarBotonTema();
 
-// Protegido: si el botón no existe todavía, no rompe el resto del script
 if (botonTema) {
   botonTema.addEventListener('click', function () {
     raiz.classList.toggle('dark');
-    const oscuro = raiz.classList.contains('dark');
-    localStorage.setItem('tema', oscuro ? 'oscuro' : 'claro');
+    localStorage.setItem('tema', raiz.classList.contains('dark') ? 'oscuro' : 'claro');
+    actualizarBotonTema();
   });
 }
 
@@ -63,11 +70,10 @@ gsap.registerPlugin(ScrollTrigger);
 
 const tarjetas = gsap.utils.toArray('.tarjeta-categoria');
 
-const PAUSA = 2;              // tiempo con la tarjeta quieta antes de que entre la siguiente
-const TRANSICION = 1;         // tiempo que tarda en subir la siguiente
-const PANTALLAS_POR_UNIDAD = 0.6; // pantallas de scroll por cada unidad de tiempo
+const PAUSA = 2;             
+const TRANSICION = 1;         
+const PANTALLAS_POR_UNIDAD = 0.6; 
 
-// La 2ª y la 3ª empiezan fuera de pantalla, por debajo
 gsap.set(tarjetas.slice(1), { yPercent: 100 });
 
 const lineaTiempo = gsap.timeline({ defaults: { ease: 'none' } });
@@ -79,7 +85,6 @@ tarjetas.slice(1).forEach(function (tarjeta, i) {
     .to(tarjeta, { yPercent: 0, duration: TRANSICION }, inicio);
 });
 
-// Pausa final para ver la última tarjeta antes de soltar el pin
 lineaTiempo.to({}, { duration: PAUSA });
 
 ScrollTrigger.create({
@@ -103,5 +108,36 @@ if (formulario) {
     const nombre = formulario.nombre.value.trim();
     estadoFormulario.textContent = 'Gracias, ' + nombre + '. Hemos recibido tu mensaje.';
     formulario.reset();
+  });
+}
+
+
+
+
+// ===== Música (Howler.js) =====
+const musica = new Howl({
+  src: ['media/audio/Stan - Eminem.mp3'],
+  loop: true,
+  volume: 0.5
+});
+
+const botonMusica = document.querySelector('#boton-musica');
+const iconoPlay = document.querySelector('#icono-play');
+const iconoPausa = document.querySelector('#icono-pausa');
+
+if (botonMusica) {
+  botonMusica.addEventListener('click', function () {
+    const sonando = musica.playing();
+    if (sonando) {
+      musica.pause();
+    } else {
+      musica.play();
+    }
+    const ahoraSuena = !sonando;
+    iconoPlay.classList.toggle('hidden', ahoraSuena);
+    iconoPausa.classList.toggle('hidden', !ahoraSuena);
+    botonMusica.classList.toggle('sonando', ahoraSuena);
+    botonMusica.setAttribute('aria-pressed', ahoraSuena);
+    botonMusica.setAttribute('aria-label', ahoraSuena ? 'Pausar música' : 'Reproducir música');
   });
 }

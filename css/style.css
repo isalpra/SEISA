@@ -68,8 +68,17 @@
       transform: translateX(0.4rem);
     }
     
+    .boton-musica.sonando {
+      animation: pulso 1.8s ease-out infinite;
+    }
 }
 
+
+
+@keyframes pulso {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-acento) 60%, transparent); }
+  100% { box-shadow: 0 0 0 1rem transparent; }
+}
 
 @keyframes desplegar {
   from { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
