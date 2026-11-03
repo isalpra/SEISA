@@ -59,8 +59,47 @@
     </header>
    <main>
     <!-- <button id="boton-tema">Dark</button> -->
-    <section id="portada">
+    <section id="portada"aria-label="Bienvenidos a Seisa"
+    class="portada relative isolate flex min-h-[calc(100svh-4rem)] items-center justify-center overflow-hidden bg-fondo px-5 py-12 md:min-h-[calc(100svh-4.5rem)] md:px-10">
+    <!-- Imagen de fondo -->
+    <img
+        src="img/fondo.webp"
+        alt=""
+        aria-hidden="true"
+        class="absolute inset-0 -z-20 h-full w-full object-cover object-center">
 
+    <!-- Capa suave para integrar los elementos -->
+    <div
+        class="absolute inset-0 -z-10 bg-fondo/20"
+        aria-hidden="true"
+    ></div>
+
+    <!-- Composición de la portada -->
+    <div
+        class="portada-contenido mx-auto grid w-full max-w-7xl grid-cols-1 items-center justify-items-center gap-7 md:grid-cols-[1fr_auto_1fr] md:gap-5">
+
+        <!-- Texto izquierdo -->
+        <p
+            class="portada-texto order-1 text-center font-texto text-sm uppercase tracking-[0.12em] md:order-1 md:text-base lg:text-lg">
+            Instrumentos<br>
+            de cuerda
+        </p>
+
+        <!-- Logotipo central -->
+        <div class="portada-logo order-2 flex w-full items-center justify-center md:order-2">
+            <img
+                src="img/BEI.png"
+                alt="SEISA"
+                class="h-auto w-[115%] max-w-none object-contain md:w-[55vw] lg:w-[65vw] lg:max-w-[850px]">
+        </div>
+
+        <!-- Texto derecho -->
+        <p
+            class="portada-texto order-3 text-center font-texto text-sm uppercase tracking-[0.12em] md:order-3 md:text-base lg:text-lg">
+            Todo tipo<br>
+            de categorías
+        </p>
+    </div>
     </section>
     <section id="novedades">
 

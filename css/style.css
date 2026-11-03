@@ -49,3 +49,91 @@
   from { opacity: 1; transform: scaleY(1) translateY(0); }
   to   { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
 }
+
+
+
+/* =====================================
+   PORTADA - SEISA
+===================================== */
+
+@layer components {
+
+    .portada {
+        isolation: isolate;
+    }
+    .portada-contenido {
+        position: relative;
+        z-index: 1;
+    }
+    /* Logotipo */
+   /* LOGOTIPO SEISA */
+
+    .portada-logo img {
+        opacity: 0.38;
+        mix-blend-mode: multiply;
+
+        /* Cambiar negro por un tono marrón cálido */
+        filter: brightness(0) saturate(100%)
+                invert(37%) sepia(19%)
+                saturate(650%) hue-rotate(350deg)
+                brightness(90%) contrast(85%);
+
+        animation: aparecer-logo 1.2s ease-out both;
+    }
+        
+    /* Textos laterales */
+    .portada-texto {
+        line-height: 1.6;
+        animation: aparecer-texto 1s ease-out both;
+    }
+    .portada-texto:first-child {
+        animation-delay: 0.2s;
+    }
+    .portada-texto:last-child {
+        animation-delay: 0.4s;
+    }
+}
+
+/* Animaciones de entrada */
+
+@keyframes aparecer-logo {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+
+    to {
+        opacity: 0.38;
+        transform: scale(1);
+    }
+}
+
+@keyframes aparecer-texto {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Adaptación a móviles */
+
+@media (max-width: 767px) {
+
+    .portada {
+        min-height: calc(100svh - 4rem);
+    }
+    .portada-contenido {
+        gap: 2rem;
+    }
+    .portada-logo img {
+        width: 90%;
+        max-width: 360px;
+    }
+    .portada-texto {
+        font-size: 0.8rem;
+    }
+}
