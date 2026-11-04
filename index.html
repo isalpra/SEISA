@@ -16,8 +16,8 @@
         @theme static {
             /* Colores del modo claro. Los del modo oscuro están en css/styles.css */
             --color-fondo: #f4ecdc;
-            --color-texto: #2a1a10;
-            --color-acento: #93362a;
+            --color-texto: #382c25;
+            --color-acento: #8f2d00;
 
             --font-rotulo: "Fraunces", Georgia, serif;
             --font-texto: "Work Sans", system-ui, sans-serif;
@@ -29,13 +29,12 @@
         <nav aria-label="Navegación principal"
             class="mx-auto flex  items-center justify-between px-4 py-3">
 
-            <!-- Logo: la altura es fija y el ancho se adapta a la proporción de la imagen -->
             <a href="#portada" class="flex items-center focus:outline-2 focus:outline-acento">
             <img src="img/logo.png" alt="Seisa, inicio"
                 class="h-10 w-auto object-contain md:h-14">
             </a>
 
-            <!-- Botón con imagen (solo móvil) -->
+        
             <button id="boton-menu" type="button"
                     aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"
                     class="flex h-12 w-12 items-center justify-center rounded-lg p-1
@@ -43,7 +42,7 @@
             <img src="img/menu.png" alt="" class="h-full w-full object-contain">
             </button>
 
-            <!-- Enlaces: desplegable en móvil, fila horizontal desde md -->
+           
             <ul id="menu-principal"
                 class="menu-desplegable hidden absolute left-0 right-0 top-full z-50
                     flex-col gap-1 border-b border-texto/20 bg-fondo p-4
@@ -58,18 +57,238 @@
         </nav>
     </header>
    <main>
-    <!-- <button id="boton-tema">Dark</button> -->
-    <section id="portada">
+    
+    <button id="boton-tema" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false"
+            class="fixed bottom-4 left-4 z-50 flex h-12 w-12 items-center justify-center rounded-full
+                bg-texto text-fondo shadow-lg transition duration-300
+                hover:scale-110 focus-visible:scale-110
+                focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-acento
+                md:bottom-6 md:left-6">
+   
+    <svg class="h-6 w-6 dark:hidden" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+    </svg>
+    
+    <svg class="hidden h-6 w-6 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" fill="currentColor"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </svg>
+    </button>
+
+
+    <button id="boton-musica" type="button" aria-label="Reproducir música" aria-pressed="false"
+            class="boton-musica fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full
+                bg-acento text-fondo shadow-lg transition duration-300
+                hover:scale-110 focus-visible:scale-110
+                focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-texto
+                md:bottom-6 md:right-6">
+
+    <svg id="icono-play" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M8 5v14l11-7Z"/>
+    </svg>
+
+    <svg id="icono-pausa" class="hidden h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6 5h4v14H6zM14 5h4v14h-4z"/>
+    </svg>
+    </button>
+
+
+    <section id="portada" class="min-h-screen">
 
     </section>
-    <section id="novedades">
+    <section id="novedades" class="min-h-screen">
 
     </section>
-    <section id="categorias">
+    <section id="categorias" aria-labelledby="titulo-categorias"
+         class="relative h-screen overflow-hidden">
+        <h2 id="titulo-categorias" class="sr-only">Categorías</h2>
 
+        <!-- Tarjeta 1: Percutida -->
+        <article class="tarjeta-categoria absolute inset-x-4 inset-y-16 md:inset-x-16 md:inset-y-24 lg:inset-x-32 lg:inset-y-28
+                        grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2
+                        overflow-hidden rounded-3xl bg-acento text-fondo
+                        shadow-[0_-12px_30px_-10px_rgba(0,0,0,0.35)]">
+            <div class="@container flex min-w-0 flex-col items-start justify-center gap-6 p-6 md:p-8 lg:p-12 order-2 lg:order-1">
+            <h3 class="max-w-full font-rotulo text-[clamp(1.75rem,13cqw,4.5rem)] uppercase leading-none [overflow-wrap:anywhere]">
+                Percutida
+            </h3>
+            <a href="percutida.html"
+                class="group inline-flex items-center gap-2 rounded-full border-2 border-fondo px-6 py-3
+                        font-texto uppercase tracking-wide transition duration-300
+                        hover:-translate-y-1 hover:bg-fondo hover:text-texto
+                        focus-visible:-translate-y-1 focus-visible:bg-fondo focus-visible:text-texto
+                        focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fondo">
+                Ver percutida
+                <span aria-hidden="true"
+                    class="inline-block transition-transform duration-300
+                            group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5">→</span>
+            </a>
+            </div>
+            <img src="media/img/cuerda percutida.jpg" alt="Instrumentos de percusión"
+                class="order-1 lg:order-2 h-full w-full object-cover">
+        </article>
+
+        <!-- Tarjeta 2: Frotada -->
+        <article class="tarjeta-categoria absolute inset-x-4 inset-y-16 md:inset-x-16 md:inset-y-24 lg:inset-x-32 lg:inset-y-28
+                        grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2
+                        overflow-hidden rounded-3xl bg-texto text-fondo
+                        shadow-[0_-12px_30px_-10px_rgba(0,0,0,0.35)]">
+            <div class="@container flex min-w-0 flex-col items-start justify-center gap-6 p-6 md:p-8 lg:p-12 order-2 lg:order-1">
+            <h3 class="max-w-full font-rotulo text-[clamp(1.75rem,13cqw,4.5rem)] uppercase leading-none [overflow-wrap:anywhere]">
+                Frotada
+            </h3>
+            <a href="frotada.html"
+                class="group inline-flex items-center gap-2 rounded-full border-2 border-fondo px-6 py-3
+                        font-texto uppercase tracking-wide transition duration-300
+                        hover:-translate-y-1 hover:bg-fondo hover:text-texto
+                        focus-visible:-translate-y-1 focus-visible:bg-fondo focus-visible:text-texto
+                        focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fondo">
+                Ver frotada
+                <span aria-hidden="true"
+                    class="inline-block transition-transform duration-300
+                            group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5">→</span>
+            </a>
+            </div>
+            <img src="media/img/cuerda frotada.webp" alt="Instrumentos de cuerda frotada"
+                class="order-1 lg:order-2 h-full w-full object-cover">
+        </article>
+
+        <!-- Tarjeta 3: Pulsada -->
+        <article class="tarjeta-categoria absolute inset-x-4 inset-y-16 md:inset-x-16 md:inset-y-24 lg:inset-x-32 lg:inset-y-28
+                        grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2
+                        overflow-hidden rounded-3xl bg-acento text-fondo
+                        shadow-[0_-12px_30px_-10px_rgba(0,0,0,0.35)]">
+            <div class="@container flex min-w-0 flex-col items-start justify-center gap-6 p-6 md:p-8 lg:p-12 order-2 lg:order-1">
+            <h3 class="max-w-full font-rotulo text-[clamp(1.75rem,13cqw,4.5rem)] uppercase leading-none [overflow-wrap:anywhere]">
+                Pulsada
+            </h3>
+            <a href="pulsada.html"
+                class="group inline-flex items-center gap-2 rounded-full border-2 border-fondo px-6 py-3
+                        font-texto uppercase tracking-wide transition duration-300
+                        hover:-translate-y-1 hover:bg-fondo hover:text-texto
+                        focus-visible:-translate-y-1 focus-visible:bg-fondo focus-visible:text-texto
+                        focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fondo">
+                Ver pulsada
+                <span aria-hidden="true"
+                    class="inline-block transition-transform duration-300
+                            group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5">→</span>
+            </a>
+            </div>
+            <img src="media/img/cuerda pulsada.jpg" alt="Instrumentos de cuerda pulsada"
+                class="order-1 lg:order-2 h-full w-full object-cover">
+        </article>
     </section>
-    <section id="información">
+    <section id="informacion" aria-labelledby="titulo-informacion"
+         class="px-4 py-16 md:px-8 md:py-24 lg:px-12">
+        <h2 id="titulo-informacion"
+            class="mb-12 text-center font-rotulo text-3xl uppercase md:mb-16 md:text-5xl">
+            Información
+        </h2>
 
+        
+        <div class="mx-auto flex  flex-col gap-12 md:flex-row md:justify-between md:gap-0">
+
+            <!-- HORARIO -->
+            <div class="flex flex-col md:w-1/4" data-aos="fade-up">
+            <h3 class="mb-8 text-center font-texto font-semibold">Horario</h3>
+
+            <div class="flex flex-1 flex-col justify-between gap-8">
+                <div>
+                <div class="flex items-center gap-4 font-texto font-semibold">
+                    <span>Lunes</span>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto"></span>
+                    <span>Sábado</span>
+                </div>
+                <hr class="my-4 border-t-2 border-texto">
+                <p class="flex items-center gap-4 font-texto">
+                    <time datetime="10:00">10:00</time>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto/60"></span>
+                    <time datetime="14:00">14:00</time>
+                </p>
+                <p class="mt-2 flex items-center gap-4 font-texto">
+                    <time datetime="16:00">16:00</time>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto/60"></span>
+                    <time datetime="20:00">20:00</time>
+                </p>
+                </div>
+
+                <div>
+                <div class="flex items-center gap-4 font-texto font-semibold">
+                    <span>Domingos</span>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto"></span>
+                    <span>Festivos</span>
+                </div>
+                <hr class="my-4 border-t-2 border-texto">
+                <p class="flex items-center gap-4 font-texto">
+                    <time datetime="09:00">09:00</time>
+                    <span aria-hidden="true" class="h-px flex-1 bg-texto/60"></span>
+                    <time datetime="14:00">14:00</time>
+                </p>
+                </div>
+            </div>
+            </div>
+
+            <!-- UBICACIÓN -->
+            <div class="flex flex-col gap-6 md:w-1/3" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="sr-only">Ubicación</h3>
+            <img src="img/ubicacion.jpg" alt="Fachada de la tienda Seisa"
+                class="min-h-64 w-full flex-1 object-cover">
+            <address class="text-center font-texto font-semibold not-italic">
+                Av. Teresa de Calcuta, s/n, 28903 Getafe, Madrid
+            </address>
+            </div>
+
+            <!-- CONTACTO -->
+            <div class="flex flex-col md:w-1/4">
+            <h3 class="mb-8 text-center font-texto font-semibold">Contacto</h3>
+
+            <form id="formulario-contacto" class="flex flex-1 flex-col justify-between gap-8">
+                <div class="flex flex-col gap-8">
+                <div>
+                    <label for="nombre" class="block font-texto font-semibold">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" required autocomplete="name"
+                        placeholder="Escribe aquí"
+                        class="w-full border-b border-texto bg-transparent py-2 font-texto
+                                placeholder:text-texto/60
+                                focus-visible:border-acento focus-visible:outline-none">
+                </div>
+
+                <div>
+                    <label for="correo" class="block font-texto font-semibold">Correo electrónico</label>
+                    <input id="correo" name="correo" type="email" required autocomplete="email"
+                        placeholder="Escribe aquí"
+                        class="w-full border-b border-texto bg-transparent py-2 font-texto
+                                placeholder:text-texto/60
+                                focus-visible:border-acento focus-visible:outline-none">
+                </div>
+
+                <div>
+                    <label for="mensaje" class="block font-texto font-semibold">Mensaje</label>
+                    <textarea id="mensaje" name="mensaje" rows="3" required
+                            placeholder="Escribe aquí"
+                            class="w-full resize-none border-b border-texto bg-transparent py-2 font-texto
+                                    placeholder:text-texto/60
+                                    focus-visible:border-acento focus-visible:outline-none"></textarea>
+                </div>
+                </div>
+
+                <div class="flex flex-col items-center gap-2">
+                <button type="submit"
+                        class="rounded-full border-2 border-texto px-8 py-2 font-texto font-semibold
+                                transition duration-300
+                                hover:-translate-y-1 hover:bg-texto hover:text-fondo
+                                focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-acento
+                                dark:border-acento dark:hover:bg-acento dark:hover:text-texto">
+                    Enviar
+                </button>
+                <p id="estado-formulario" role="status" aria-live="polite"
+                    class="text-center font-texto text-sm"></p>
+                </div>
+            </form>
+            </div>
+
+        </div>
     </section>
    </main>
    <footer>
@@ -77,6 +296,9 @@
    </footer>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
     <script src="js/script.js"></script>
    
 </body>

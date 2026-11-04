@@ -21,10 +21,12 @@
 
 @layer base {
     .dark {
-    --color-fondo: #5a008f;
+    --color-fondo: #28043d;
     --color-texto: #f2e8d3;
-    --color-acento: #f0c285;
+    --color-acento: #8bb4ff;
     }
+
+   
 }
 /* Los selectores por clase (.class), en "components" */
 
@@ -38,6 +40,55 @@
     .menu-desplegable.cerrando {
         animation: plegar 0.25s ease-in forwards;
     }
+
+    .boton-categoria {
+      background-image: linear-gradient(var(--color-fondo), var(--color-fondo));
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 0% 100%;
+      transition: background-size 0.35s ease, color 0.35s ease, transform 0.25s ease;
+    }
+    
+    .boton-categoria:hover,
+    .boton-categoria:focus-visible {
+      background-size: 100% 100%;
+      color: var(--color-texto);
+      transform: translateY(-3px);
+    }
+    
+    .boton-categoria:active {
+      transform: translateY(0);
+    }
+    
+    .boton-categoria .flecha {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    
+    .boton-categoria:hover .flecha,
+    .boton-categoria:focus-visible .flecha {
+      transform: translateX(0.4rem);
+    }
+    
+    .boton-musica.sonando {
+      animation: pulso 1.8s ease-out infinite;
+    }
+
+    .modal-producto[open] {
+      animation: aparecer-ficha 0.3s ease-out;
+    }
+}
+
+
+
+@keyframes aparecer-ficha {
+  from { opacity: 0; transform: translateY(1.5rem) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulso {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-acento) 60%, transparent); }
+  100% { box-shadow: 0 0 0 1rem transparent; }
 }
 
 @keyframes desplegar {
@@ -49,3 +100,5 @@
   from { opacity: 1; transform: scaleY(1) translateY(0); }
   to   { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
 }
+
+
