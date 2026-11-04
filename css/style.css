@@ -21,10 +21,12 @@
 
 @layer base {
     .dark {
-    --color-fondo: #5a008f;
+    --color-fondo: #28043d;
     --color-texto: #f2e8d3;
-    --color-acento: #f0c285;
+    --color-acento: #8bb4ff;
     }
+
+   
 }
 /* Los selectores por clase (.class), en "components" */
 
@@ -38,6 +40,55 @@
     .menu-desplegable.cerrando {
         animation: plegar 0.25s ease-in forwards;
     }
+
+    .boton-categoria {
+      background-image: linear-gradient(var(--color-fondo), var(--color-fondo));
+      background-repeat: no-repeat;
+      background-position: left center;
+      background-size: 0% 100%;
+      transition: background-size 0.35s ease, color 0.35s ease, transform 0.25s ease;
+    }
+    
+    .boton-categoria:hover,
+    .boton-categoria:focus-visible {
+      background-size: 100% 100%;
+      color: var(--color-texto);
+      transform: translateY(-3px);
+    }
+    
+    .boton-categoria:active {
+      transform: translateY(0);
+    }
+    
+    .boton-categoria .flecha {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    
+    .boton-categoria:hover .flecha,
+    .boton-categoria:focus-visible .flecha {
+      transform: translateX(0.4rem);
+    }
+    
+    .boton-musica.sonando {
+      animation: pulso 1.8s ease-out infinite;
+    }
+
+    .modal-producto[open] {
+      animation: aparecer-ficha 0.3s ease-out;
+    }
+}
+
+
+
+@keyframes aparecer-ficha {
+  from { opacity: 0; transform: translateY(1.5rem) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes pulso {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-acento) 60%, transparent); }
+  100% { box-shadow: 0 0 0 1rem transparent; }
 }
 
 @keyframes desplegar {
@@ -54,86 +105,3 @@
 
 /* =====================================
    PORTADA - SEISA
-===================================== */
-
-@layer components {
-
-    .portada {
-        isolation: isolate;
-    }
-    .portada-contenido {
-        position: relative;
-        z-index: 1;
-    }
-    /* Logotipo */
-   /* LOGOTIPO SEISA */
-
-    .portada-logo img {
-        opacity: 0.38;
-        mix-blend-mode: multiply;
-
-        /* Cambiar negro por un tono marrón cálido */
-        filter: brightness(0) saturate(100%)
-                invert(37%) sepia(19%)
-                saturate(650%) hue-rotate(350deg)
-                brightness(90%) contrast(85%);
-
-        animation: aparecer-logo 1.2s ease-out both;
-    }
-        
-    /* Textos laterales */
-    .portada-texto {
-        line-height: 1.6;
-        animation: aparecer-texto 1s ease-out both;
-    }
-    .portada-texto:first-child {
-        animation-delay: 0.2s;
-    }
-    .portada-texto:last-child {
-        animation-delay: 0.4s;
-    }
-}
-
-/* Animaciones de entrada */
-
-@keyframes aparecer-logo {
-    from {
-        opacity: 0;
-        transform: scale(0.96);
-    }
-
-    to {
-        opacity: 0.38;
-        transform: scale(1);
-    }
-}
-
-@keyframes aparecer-texto {
-    from {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-/* Adaptación a móviles */
-
-@media (max-width: 767px) {
-
-    .portada {
-        min-height: calc(100svh - 4rem);
-    }
-    .portada-contenido {
-        gap: 2rem;
-    }
-    .portada-logo img {
-        width: 90%;
-        max-width: 360px;
-    }
-    .portada-texto {
-        font-size: 0.8rem;
-    }
-}
