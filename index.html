@@ -9,6 +9,10 @@
      <link rel="stylesheet" href="css/style.css">
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
 
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
      <style type="text/tailwindcss">
         /* Modo oscuro con la clase .dark en <html> (la pone el JavaScript) */
         @custom-variant dark (&:where(.dark, .dark *));
@@ -19,8 +23,9 @@
             --color-texto: #382c25;
             --color-acento: #8f2d00;
 
-            --font-rotulo: "Fraunces", Georgia, serif;
-            --font-texto: "Work Sans", system-ui, sans-serif;
+            
+            --font-rotulo: "Playfair Display";
+            --font-texto: "Be Vietnam Pro", system-ui, sans-serif;
         }
     </style>
 </head>
@@ -38,21 +43,31 @@
             <button id="boton-menu" type="button"
                     aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"
                     class="flex h-12 w-12 items-center justify-center rounded-lg p-1
-                        hover:bg-acento/20 focus:outline-none focus:outline-acento md:hidden">
+                         focus:outline-none focus:outline-acento md:hidden">
             <img src="media/img/bocadillo.png" alt="" class="h-full w-full object-contain">
             </button>
 
            
             <ul id="menu-principal"
-                class="menu-desplegable hidden absolute left-0 right-0 top-full z-50
-                    flex-col gap-1 border-b border-texto/20 bg-fondo p-4
-                    md:static md:flex md:flex-row md:gap-8 md:border-0 md:bg-transparent md:p-0 md:animate-none">
-            <li><a href="#novedades"
-                    class="block rounded px-3 py-2 font-texto hover:text-acento focus:outline-2 focus:outline-acento">Novedades</a></li>
-            <li><a href="#categorias"
-                    class="block rounded px-3 py-2 font-texto hover:text-acento focus:outline-2 focus:outline-acento">Categorías</a></li>
-            <li><a href="#informacion"
-                    class="block rounded px-3 py-2 font-texto hover:text-acento focus:outline-2 focus:outline-acento">Información</a></li>
+                    class="menu-desplegable hidden absolute left-0 right-0 top-full z-50
+                flex-col divide-y divide-texto/20 border-y border-texto/20 bg-fondo p-4
+                md:static md:flex md:flex-row md:items-center md:gap-8 md:divide-y-0 lg:gap-10
+                md:border-0 md:bg-transparent md:p-0 md:animate-none">
+
+                <li class="w-full text-left md:w-auto">
+                    <a href="#novedades"
+                    class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Novedades</a>
+                </li>
+
+                <li class="w-full text-center md:w-auto">
+                    <a href="#categorias"
+                    class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Categorías</a>
+                </li>
+
+                <li class="w-full text-right md:w-auto">
+                    <a href="#informacion"
+                    class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Información</a>
+                </li>
             </ul>
         </nav>
     </header>

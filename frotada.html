@@ -8,6 +8,10 @@
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
         <link rel="stylesheet" href="css/style.css">
 
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
         <style type="text/tailwindcss">
             @custom-variant dark (&:where(.dark, .dark *));
 
@@ -17,8 +21,8 @@
                 --color-texto: #382c25;
                 --color-acento: #8f2d00;
 
-                --font-rotulo: "Fraunces", Georgia, serif;
-                --font-texto: "Work Sans", system-ui, sans-serif;
+                --font-rotulo: "Playfair Display";
+                --font-texto: "Be Vietnam Pro", system-ui, sans-serif;
             }
         </style>
     </head>
@@ -26,39 +30,51 @@
 
     <body class="flex min-h-dvh flex-col bg-fondo text-texto md:h-dvh md:overflow-hidden">
 
-        <header class="relative flex-none border-b border-texto/20 bg-fondo">
+        <header class="relative bg-fondo border-b border-texto/20">
             <nav aria-label="Navegación principal"
-                class="flex items-center justify-between px-4 py-3 md:px-8 lg:px-12">
+                class="mx-auto flex  items-center justify-between px-4 py-3">
 
-            <a href="index.html" class="flex items-center focus-visible:outline-2 focus-visible:outline-acento">
-                <img src="img/logo.png" alt="Seisa, inicio" class="h-10 w-auto object-contain md:h-14 lg:h-16">
-            </a>
+                <a href="index.html" class="flex items-center focus:outline-2 focus:outline-acento">
+                <img src="media/img/logo.png" alt="Seisa, inicio"
+                    class="h-10 w-auto object-contain md:h-14">
+                </a>
 
-            <button id="boton-menu" type="button"
-                    aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"
-                    class="flex h-12 w-12 items-center justify-center rounded-lg p-1
-                            hover:bg-acento/20 focus-visible:outline-2 focus-visible:outline-acento md:hidden">
-                <img src="img/menu.png" alt="" class="h-full w-full object-contain">
-            </button>
+            
+                <button id="boton-menu" type="button"
+                        aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"
+                        class="flex h-12 w-12 items-center justify-center rounded-lg p-1
+                            focus:outline-none focus:outline-acento md:hidden">
+                <img src="media/img/bocadillo.png" alt="" class="h-full w-full object-contain">
+                </button>
 
-            <ul id="menu-principal"
-                class="menu-desplegable hidden absolute left-0 right-0 top-full z-50
-                        flex-col gap-1 border-b border-texto/20 bg-fondo p-4
-                        md:static md:flex md:flex-row md:gap-8 lg:gap-10
-                        md:border-0 md:bg-transparent md:p-0 md:animate-none">
-                <li><a href="index.html#novedades"
-                    class="block rounded px-3 py-2 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:text-lg">Novedades</a></li>
-                <li><a href="index.html#categorias"
-                    class="block rounded px-3 py-2 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:text-lg">Categorías</a></li>
-                <li><a href="index.html#informacion"
-                    class="block rounded px-3 py-2 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:text-lg">Información</a></li>
-            </ul>
+            
+                <ul id="menu-principal"
+                        class="menu-desplegable hidden absolute left-0 right-0 top-full z-50
+                    flex-col divide-y divide-texto/20 border-y border-texto/20 bg-fondo p-4
+                    md:static md:flex md:flex-row md:items-center md:gap-8 md:divide-y-0 lg:gap-10
+                    md:border-0 md:bg-transparent md:p-0 md:animate-none">
+
+                    <li class="w-full text-left md:w-auto">
+                        <a href="#novedades"
+                        class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Novedades</a>
+                    </li>
+
+                    <li class="w-full text-center md:w-auto">
+                        <a href="#categorias"
+                        class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Categorías</a>
+                    </li>
+
+                    <li class="w-full text-right md:w-auto">
+                        <a href="#informacion"
+                        class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Información</a>
+                    </li>
+                </ul>
             </nav>
         </header>
 
     
         <main class="flex flex-1 flex-col gap-4 px-4 py-4 md:min-h-0 md:gap-5 md:px-8 md:py-5 lg:px-12">
-            <h1 class="flex-none text-center font-rotulo text-3xl md:text-4xl">Cuerda percutida</h1>
+            <h1 class="flex-none text-center font-rotulo text-3xl md:text-4xl">Cuerda Frotada</h1>
 
         
             <ul id="galeria"
