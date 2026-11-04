@@ -21,9 +21,9 @@
 
 @layer base {
     .dark {
-    --color-fondo: #5a008f;
+    --color-fondo: #28043d;
     --color-texto: #f2e8d3;
-    --color-acento: #f0c285;
+    --color-acento: #8bb4ff;
     }
 }
 /* Los selectores por clase (.class), en "components" */

@@ -16,8 +16,8 @@
         @theme static {
             /* Colores del modo claro. Los del modo oscuro están en css/styles.css */
             --color-fondo: #f4ecdc;
-            --color-texto: #2a1a10;
-            --color-acento: #93362a;
+            --color-texto: #382c25;
+            --color-acento: #8f2d00;
 
             --font-rotulo: "Fraunces", Georgia, serif;
             --font-texto: "Work Sans", system-ui, sans-serif;
@@ -101,14 +101,18 @@
 
     </section>
     <section id="categorias" aria-labelledby="titulo-categorias"
-         class="relative h-screen overflow-hidden p-3 md:p-6">
+         class="relative h-screen overflow-hidden">
         <h2 id="titulo-categorias" class="sr-only">Categorías</h2>
 
         <!-- Tarjeta 1: Percutida -->
-        <article class="tarjeta-categoria absolute inset-x-4 inset-y-10 md:inset-x-16 md:inset-y-16 lg:inset-x-32 lg:inset-y-20 grid grid-rows-2 md:grid-rows-1 md:grid-cols-2
-                        overflow-hidden rounded-3xl bg-acento text-fondo ">
-            <div class="flex flex-col items-start justify-center gap-6 p-6 md:p-12 order-2 md:order-1">
-            <h3 class="font-rotulo text-5xl uppercase md:text-7xl">Percutida</h3>
+        <article class="tarjeta-categoria absolute inset-x-4 inset-y-16 md:inset-x-16 md:inset-y-24 lg:inset-x-32 lg:inset-y-28
+                        grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2
+                        overflow-hidden rounded-3xl bg-acento text-fondo
+                        shadow-[0_-12px_30px_-10px_rgba(0,0,0,0.35)]">
+            <div class="@container flex min-w-0 flex-col items-start justify-center gap-6 p-6 md:p-8 lg:p-12 order-2 lg:order-1">
+            <h3 class="max-w-full font-rotulo text-[clamp(1.75rem,13cqw,4.5rem)] uppercase leading-none [overflow-wrap:anywhere]">
+                Percutida
+            </h3>
             <a href="percutida.html"
                 class="group inline-flex items-center gap-2 rounded-full border-2 border-fondo px-6 py-3
                         font-texto uppercase tracking-wide transition duration-300
@@ -121,15 +125,19 @@
                             group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5">→</span>
             </a>
             </div>
-            <img src="img/percutida.jpg" alt="Instrumentos de percusión"
-                class="order-1 md:order-2 h-full w-full object-cover">
+            <img src="media/img/cuerda percutida.jpg" alt="Instrumentos de percusión"
+                class="order-1 lg:order-2 h-full w-full object-cover">
         </article>
 
         <!-- Tarjeta 2: Frotada -->
-        <article class="tarjeta-categoria absolute inset-x-4 inset-y-10 md:inset-x-16 md:inset-y-16 lg:inset-x-32 lg:inset-y-20 grid grid-rows-2 md:grid-rows-1 md:grid-cols-2
-                        overflow-hidden rounded-3xl bg-texto text-fondo ">
-            <div class="flex flex-col items-start justify-center gap-6 p-6 md:p-12 order-2 md:order-1">
-            <h3 class="font-rotulo text-5xl uppercase md:text-7xl">Frotada</h3>
+        <article class="tarjeta-categoria absolute inset-x-4 inset-y-16 md:inset-x-16 md:inset-y-24 lg:inset-x-32 lg:inset-y-28
+                        grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2
+                        overflow-hidden rounded-3xl bg-texto text-fondo
+                        shadow-[0_-12px_30px_-10px_rgba(0,0,0,0.35)]">
+            <div class="@container flex min-w-0 flex-col items-start justify-center gap-6 p-6 md:p-8 lg:p-12 order-2 lg:order-1">
+            <h3 class="max-w-full font-rotulo text-[clamp(1.75rem,13cqw,4.5rem)] uppercase leading-none [overflow-wrap:anywhere]">
+                Frotada
+            </h3>
             <a href="frotada.html"
                 class="group inline-flex items-center gap-2 rounded-full border-2 border-fondo px-6 py-3
                         font-texto uppercase tracking-wide transition duration-300
@@ -142,15 +150,19 @@
                             group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5">→</span>
             </a>
             </div>
-            <img src="img/frotada.jpg" alt="Instrumentos de cuerda frotada"
-                class="order-1 md:order-2 h-full w-full object-cover">
+            <img src="media/img/cuerda frotada.webp" alt="Instrumentos de cuerda frotada"
+                class="order-1 lg:order-2 h-full w-full object-cover">
         </article>
 
         <!-- Tarjeta 3: Pulsada -->
-        <article class="tarjeta-categoria absolute inset-x-4 inset-y-10 md:inset-x-16 md:inset-y-16 lg:inset-x-32 lg:inset-y-20 grid grid-rows-2 md:grid-rows-1 md:grid-cols-2
-                        overflow-hidden rounded-3xl bg-acento text-fondo ">
-            <div class="flex flex-col items-start justify-center gap-6 p-6 md:p-12 order-2 md:order-1">
-            <h3 class="font-rotulo text-5xl uppercase md:text-7xl">Pulsada</h3>
+        <article class="tarjeta-categoria absolute inset-x-4 inset-y-16 md:inset-x-16 md:inset-y-24 lg:inset-x-32 lg:inset-y-28
+                        grid grid-rows-2 lg:grid-rows-1 lg:grid-cols-2
+                        overflow-hidden rounded-3xl bg-acento text-fondo
+                        shadow-[0_-12px_30px_-10px_rgba(0,0,0,0.35)]">
+            <div class="@container flex min-w-0 flex-col items-start justify-center gap-6 p-6 md:p-8 lg:p-12 order-2 lg:order-1">
+            <h3 class="max-w-full font-rotulo text-[clamp(1.75rem,13cqw,4.5rem)] uppercase leading-none [overflow-wrap:anywhere]">
+                Pulsada
+            </h3>
             <a href="pulsada.html"
                 class="group inline-flex items-center gap-2 rounded-full border-2 border-fondo px-6 py-3
                         font-texto uppercase tracking-wide transition duration-300
@@ -163,8 +175,8 @@
                             group-hover:translate-x-1.5 group-focus-visible:translate-x-1.5">→</span>
             </a>
             </div>
-            <img src="img/pulsada.jpg" alt="Instrumentos de cuerda pulsada"
-                class="order-1 md:order-2 h-full w-full object-cover">
+            <img src="media/img/cuerda pulsada.jpg" alt="Instrumentos de cuerda pulsada"
+                class="order-1 lg:order-2 h-full w-full object-cover">
         </article>
     </section>
     <section id="informacion" aria-labelledby="titulo-informacion"
