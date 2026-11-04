@@ -25,6 +25,8 @@
     --color-texto: #f2e8d3;
     --color-acento: #8bb4ff;
     }
+
+   
 }
 /* Los selectores por clase (.class), en "components" */
 
@@ -71,9 +73,18 @@
     .boton-musica.sonando {
       animation: pulso 1.8s ease-out infinite;
     }
+
+    .modal-producto[open] {
+      animation: aparecer-ficha 0.3s ease-out;
+    }
 }
 
 
+
+@keyframes aparecer-ficha {
+  from { opacity: 0; transform: translateY(1.5rem) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
 
 @keyframes pulso {
   0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-acento) 60%, transparent); }
