@@ -141,3 +141,34 @@ if (botonMusica) {
     botonMusica.setAttribute('aria-label', ahoraSuena ? 'Pausar música' : 'Reproducir música');
   });
 }
+
+// ============================================================
+// NOVEDADES: las fotos aparecen de una en una al hacer scroll
+// Añade esto al final de js/script.js
+// ============================================================
+(() => {
+  const productos = document.querySelectorAll('.novedad');
+  if (!productos.length) return;
+
+  // Navegadores muy antiguos: se muestran todos sin animar
+  if (!('IntersectionObserver' in window)) {
+    productos.forEach((p) => p.classList.add('visible'));
+    return;
+  }
+
+  const observador = new IntersectionObserver(
+    (entradas) => {
+      // Si varios entran a la vez, se escalonan 0.3 s entre sí
+      entradas
+        .filter((e) => e.isIntersecting)
+        .forEach((entrada, i) => {
+          entrada.target.style.setProperty('--retraso', `${i * 0.3}s`);
+          entrada.target.classList.add('visible');
+          observador.unobserve(entrada.target);
+        });
+    },
+    { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }
+  );
+
+  productos.forEach((p) => observador.observe(p));
+})();
