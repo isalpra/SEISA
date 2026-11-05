@@ -10,7 +10,7 @@
 
          <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;   600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
         <style type="text/tailwindcss">
             @custom-variant dark (&:where(.dark, .dark *));
@@ -30,11 +30,11 @@
 
     <body class="flex min-h-dvh flex-col bg-fondo text-texto md:h-dvh md:overflow-hidden">
 
-        <header class="relative bg-fondo border-b border-texto/20">
+        <header class="sticky top-0 z-50 border-b border-texto/20 bg-fondo/90 backdrop-blur">
             <nav aria-label="Navegación principal"
                 class="mx-auto flex  items-center justify-between px-4 py-3">
 
-                <a href="index.html" class="flex items-center focus:outline-2 focus:outline-acento">
+                <a href="index.html" class="flex items-center">
                 <img src="media/img/logo.png" alt="Seisa, inicio"
                     class="h-10 w-auto object-contain md:h-14">
                 </a>
@@ -55,17 +55,17 @@
                     md:border-0 md:bg-transparent md:p-0 md:animate-none">
 
                     <li class="w-full text-left md:w-auto">
-                        <a href="#novedades"
+                        <a href="index.html#novedades"
                         class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Novedades</a>
                     </li>
 
                     <li class="w-full text-center md:w-auto">
-                        <a href="#categorias"
+                        <a href="index.html#categorias"
                         class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Categorías</a>
                     </li>
 
                     <li class="w-full text-right md:w-auto">
-                        <a href="#informacion"
+                        <a href="index.html#informacion"
                         class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Información</a>
                     </li>
                 </ul>
