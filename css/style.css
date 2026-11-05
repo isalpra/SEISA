@@ -87,7 +87,7 @@
 }
 
 @keyframes pulso {
-  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-acento) 60%, transparent); }
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-fondo) 92%, var(--color-texto)); }
   100% { box-shadow: 0 0 0 1rem transparent; }
 }
 
