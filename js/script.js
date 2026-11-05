@@ -118,7 +118,7 @@ if (formulario) {
 
 // ===== Música (Howler.js) =====
 const musica = new Howl({
-  src: ['media/audio/Stan - Eminem.mp3'],   // cambiad por vuestro audio libre de derechos
+  src: ['media/audio/guitarrafondo.mp3'],   // cambiad por vuestro audio libre de derechos
   loop: true,
   volume: 0.5,
   onloaderror: function () {
