@@ -10,6 +10,7 @@ function actualizarBotonTema() {
   }
 }
 
+// Al cargar: ¿eligió oscuro la última vez?
 if (localStorage.getItem('tema') === 'oscuro') {
   raiz.classList.add('dark');
 }
@@ -40,63 +41,67 @@ function alternarMenu(abrir) {
   botonMenu.setAttribute('aria-label', abrir ? 'Cerrar menú' : 'Abrir menú');
 }
 
-botonMenu.addEventListener('click', function () {
-  alternarMenu(botonMenu.getAttribute('aria-expanded') !== 'true');
-});
-
-// Cuando termina la animación de salida, se oculta de verdad
-menu.addEventListener('animationend', function (evento) {
-  if (evento.animationName === 'plegar') {
-    menu.classList.remove('cerrando');
-    menu.classList.remove('flex');
-    menu.classList.add('hidden');
-  }
-});
-
-// Al pulsar un enlace en móvil, se cierra el menú
-menu.querySelectorAll('a').forEach(function (enlace) {
-  enlace.addEventListener('click', function () {
-    alternarMenu(false);
+if (botonMenu && menu) {
+  botonMenu.addEventListener('click', function () {
+    alternarMenu(botonMenu.getAttribute('aria-expanded') !== 'true');
   });
-});
+
+  // Cuando termina la animación de salida, se oculta de verdad
+  menu.addEventListener('animationend', function (evento) {
+    if (evento.animationName === 'plegar') {
+      menu.classList.remove('cerrando');
+      menu.classList.remove('flex');
+      menu.classList.add('hidden');
+    }
+  });
+
+  // Al pulsar un enlace en móvil, se cierra el menú
+  menu.querySelectorAll('a').forEach(function (enlace) {
+    enlace.addEventListener('click', function () {
+      alternarMenu(false);
+    });
+  });
+}
 
 // ===== AOS (animaciones al hacer scroll) =====
 AOS.init();
 
-
-
 // ===== Tarjetas apiladas con GSAP + ScrollTrigger =====
-gsap.registerPlugin(ScrollTrigger);
+// Solo se ejecuta en index.html, donde existe la sección #categorias
+if (document.querySelector('#categorias')) {
+  gsap.registerPlugin(ScrollTrigger);
 
-const tarjetas = gsap.utils.toArray('.tarjeta-categoria');
+  const tarjetas = gsap.utils.toArray('.tarjeta-categoria');
 
-const PAUSA = 2;             
-const TRANSICION = 1;         
-const PANTALLAS_POR_UNIDAD = 0.6; 
+  const PAUSA = 2;                  // tiempo con la tarjeta quieta antes de que entre la siguiente
+  const TRANSICION = 1;             // tiempo que tarda en subir la siguiente
+  const PANTALLAS_POR_UNIDAD = 0.6; // pantallas de scroll por cada unidad de tiempo
 
-gsap.set(tarjetas.slice(1), { y: () => window.innerHeight });
+  // La 2ª y la 3ª empiezan fuera de pantalla, por debajo
+  gsap.set(tarjetas.slice(1), { y: () => window.innerHeight });
 
-const lineaTiempo = gsap.timeline({ defaults: { ease: 'none' } });
+  const lineaTiempo = gsap.timeline({ defaults: { ease: 'none' } });
 
-tarjetas.slice(1).forEach(function (tarjeta, i) {
-  const inicio = i * (PAUSA + TRANSICION) + PAUSA;
-  lineaTiempo
-    .to(tarjetas[i], { scale: 0.94, duration: TRANSICION }, inicio)
-    .to(tarjeta, { y: 0, duration: TRANSICION }, inicio);
-});
+  tarjetas.slice(1).forEach(function (tarjeta, i) {
+    const inicio = i * (PAUSA + TRANSICION) + PAUSA;
+    lineaTiempo
+      .to(tarjetas[i], { scale: 0.94, duration: TRANSICION }, inicio)
+      .to(tarjeta, { y: 0, duration: TRANSICION }, inicio);
+  });
 
-lineaTiempo.to({}, { duration: PAUSA });
+  // Pausa final para ver la última tarjeta antes de soltar el pin
+  lineaTiempo.to({}, { duration: PAUSA });
 
-ScrollTrigger.create({
-  animation: lineaTiempo,
-  trigger: '#categorias',
-  start: 'top top',
-  end: () => '+=' + window.innerHeight * PANTALLAS_POR_UNIDAD * lineaTiempo.duration(),
-  pin: true,
-  scrub: 0.6,
-  invalidateOnRefresh: true
-});
-
+  ScrollTrigger.create({
+    animation: lineaTiempo,
+    trigger: '#categorias',
+    start: 'top top',
+    end: () => '+=' + window.innerHeight * PANTALLAS_POR_UNIDAD * lineaTiempo.duration(),
+    pin: true,
+    scrub: 0.6,
+    invalidateOnRefresh: true
+  });
+}
 
 // ===== Formulario de contacto =====
 const formulario = document.querySelector('#formulario-contacto');
@@ -111,34 +116,60 @@ if (formulario) {
   });
 }
 
-
-
-
 // ===== Música (Howler.js) =====
 const musica = new Howl({
-  src: ['media/audio/Stan - Eminem.mp3'],
+  src: ['media/audio/guitarrafondo.mp3'],   // cambiad por vuestro audio libre de derechos
   loop: true,
-  volume: 0.5
+  volume: 0.5,
+  onloaderror: function () {
+    console.error('No se pudo cargar el audio: revisa la ruta y el nombre del archivo.');
+  }
 });
 
 const botonMusica = document.querySelector('#boton-musica');
 const iconoPlay = document.querySelector('#icono-play');
 const iconoPausa = document.querySelector('#icono-pausa');
 
+let sonando = false;
+
+function actualizarBotonMusica() {
+  iconoPlay.classList.toggle('hidden', sonando);
+  iconoPausa.classList.toggle('hidden', !sonando);
+  botonMusica.classList.toggle('sonando', sonando);
+  botonMusica.setAttribute('aria-pressed', sonando);
+  botonMusica.setAttribute('aria-label', sonando ? 'Pausar música' : 'Reproducir música');
+}
+
 if (botonMusica) {
+  // Al cargar la página: retomar donde se quedó
+  const posicionGuardada = parseFloat(sessionStorage.getItem('musicaPosicion')) || 0;
+  const estabaSonando = sessionStorage.getItem('musicaSonando') === 'true';
+
+  if (posicionGuardada > 0) {
+    musica.once('load', function () {
+      musica.seek(posicionGuardada);
+    });
+  }
+  if (estabaSonando) {
+    musica.play();
+    sonando = true;
+    actualizarBotonMusica();
+  }
+
   botonMusica.addEventListener('click', function () {
-    const sonando = musica.playing();
     if (sonando) {
       musica.pause();
     } else {
       musica.play();
     }
-    const ahoraSuena = !sonando;
-    iconoPlay.classList.toggle('hidden', ahoraSuena);
-    iconoPausa.classList.toggle('hidden', !ahoraSuena);
-    botonMusica.classList.toggle('sonando', ahoraSuena);
-    botonMusica.setAttribute('aria-pressed', ahoraSuena);
-    botonMusica.setAttribute('aria-label', ahoraSuena ? 'Pausar música' : 'Reproducir música');
+    sonando = !sonando;
+    actualizarBotonMusica();
+  });
+
+  // Al salir de la página: guardar posición y estado
+  window.addEventListener('pagehide', function () {
+    sessionStorage.setItem('musicaPosicion', musica.seek());
+    sessionStorage.setItem('musicaSonando', sonando);
   });
 }
 

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Instrumentos de cuerda pulsada de Seisa: guitarras, bajos, arpas y más.">
+        <title>Cuerda pulsada · Seisa</title>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <link rel="stylesheet" href="css/style.css">
+
+        <link rel="icon" type="image/png" href="media/img/favicon-32.png">
+
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+        <style type="text/tailwindcss">
+            @custom-variant dark (&:where(.dark, .dark *));
+
+            @theme static {
+                /* Colores del modo claro. Los del modo oscuro están en css/styles.css */
+                --color-fondo: #f4ecdc;
+                --color-texto: #382c25;
+                --color-acento: #8f2d00;
+
+                --font-rotulo: "Playfair Display";
+                --font-texto: "Be Vietnam Pro", system-ui, sans-serif;
+            }
+        </style>
+    </head>
+
+
+        <body class="flex min-h-dvh flex-col bg-fondo text-texto md:h-dvh md:overflow-hidden">
+        <!-- Marco decorativo: una sola imagen de esquina, reflejada y girada -->
+        <div class="marco-fondo" aria-hidden="true">
+            <img src="media/img/marcoesquina.png" alt="" class="marco-esquina marco-esquina--sup-izq dark:invert">
+            <img src="media/img/marcoesquina.png" alt="" class="marco-esquina marco-esquina--sup-der dark:invert">
+            <img src="media/img/marcoesquina.png" alt="" class="marco-esquina marco-esquina--inf-izq dark:invert">
+            <img src="media/img/marcoesquina.png" alt="" class="marco-esquina marco-esquina--inf-der dark:invert">
+        </div>
+
+        <header class="sticky top-0 z-50 border-b border-texto/20 bg-fondo/90 backdrop-blur">
+            <nav aria-label="Navegación principal"
+                class="mx-auto flex  items-center justify-between px-4 py-3">
+
+                <a href="index.html" class="flex items-center">
+                <img src="media/img/logo.png" alt="Seisa, inicio"
+                    class="h-10 w-auto object-contain md:h-14 dark:invert">
+                </a>
+
+            
+                <button id="boton-menu" type="button"
+                        aria-label="Abrir menú" aria-expanded="false" aria-controls="menu-principal"
+                        class="flex h-12 w-12 items-center justify-center rounded-lg p-1
+                            focus:outline-none focus:outline-acento md:hidden">
+                <img src="media/img/bocadillo.png" alt="" class="h-full w-full object-contain dark:invert">
+                </button>
+
+            
+                <ul id="menu-principal"
+                        class="menu-desplegable hidden absolute left-0 right-0 top-full z-50
+                    flex-col divide-y divide-texto/20 border-y border-texto/20 bg-fondo p-4
+                    md:static md:flex md:flex-row md:items-center md:gap-8 md:divide-y-0 lg:gap-10
+                    md:border-0 md:bg-transparent md:p-0 md:animate-none">
+
+                    <li class="w-full text-left md:w-auto">
+                        <a href="index.html#novedades"
+                        class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Novedades</a>
+                    </li>
+
+                    <li class="w-full text-center md:w-auto">
+                        <a href="index.html#categorias"
+                        class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Categorías</a>
+                    </li>
+
+                    <li class="w-full text-right md:w-auto">
+                        <a href="index.html#informacion"
+                        class="block rounded px-3 py-3 font-texto hover:text-acento focus-visible:outline-2 focus-visible:outline-acento md:py-2 md:text-lg">Información</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+    
+        <main class="contenido-marco flex flex-1 flex-col gap-4 py-4 md:min-h-0 md:gap-5 md:py-5">
+            <h1 class="flex-none text-center font-rotulo text-3xl md:text-4xl">Cuerda Pulsada</h1>
+
+        
+            <ul id="galeria"
+                class="grid flex-1 grid-cols-2 gap-2
+                    md:min-h-0 md:grid-cols-5 md:grid-rows-3 md:gap-4">
+            </ul>
+        </main>
+
+    
+        <dialog id="ficha" aria-labelledby="ficha-nombre"
+            class="modal-producto m-auto w-[min(94vw,64rem)] max-h-[95dvh] overflow-hidden rounded-3xl
+                bg-fondo p-0 text-texto shadow-2xl backdrop:bg-black/60 open:block">
+
+            <div class="relative flex max-h-[95dvh] flex-col p-4 md:p-8">
+
+                <button id="ficha-cerrar" type="button" aria-label="Cerrar ficha"
+                        class="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full
+                            border-2 border-texto bg-fondo transition duration-300
+                            hover:bg-texto hover:text-fondo
+                            focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-acento">
+                <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18"/>
+                </svg>
+                </button>
+
+            
+                <div class="grid min-h-0 flex-1 grid-cols-2 grid-rows-[auto_minmax(0,1fr)_auto] gap-x-4 gap-y-3
+                            md:grid-cols-[1fr_1.3fr_1fr] md:grid-rows-1 md:items-center md:gap-x-10">
+
+                <h2 id="ficha-nombre"
+                    class="col-span-2 pr-10 text-center font-rotulo text-xl uppercase md:col-span-1 md:pr-0 md:text-3xl"></h2>
+
+                
+                <figure class="col-span-2 flex min-h-0 flex-col gap-2 md:col-span-1">
+                    <div class="min-h-0 flex-1 md:aspect-square md:flex-none">
+                    <img id="ficha-imagen" src="" alt=""
+                        class="h-full w-full rounded-xl bg-white object-contain">
+                    </div>
+                    <figcaption id="ficha-precio" class="font-texto text-lg font-semibold md:text-xl"></figcaption>
+                </figure>
+
+                
+                <dl id="ficha-datos"
+                    class="col-span-2 grid grid-cols-2 gap-x-4 gap-y-2 font-texto text-sm
+                            md:col-span-1 md:flex md:flex-col md:gap-3 md:text-base"></dl>
+                </div>
+            </div>
+        </dialog>
+
+        
+        <button id="boton-tema" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false"
+            class="flotante-izq fixed z-50 flex h-12 w-12 items-center justify-center rounded-full p-1
+                transition duration-300 hover:scale-110 focus-visible:scale-110
+                focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-acento">
+            <!-- Se ve en modo claro -->
+            <img src="media/img/lunaicono.png" alt=""
+                class="h-full w-full object-contain dark:hidden">
+            <!-- Se ve en modo oscuro -->
+            <img src="media/img/solicono.png" alt=""
+                class="hidden h-full w-full object-contain dark:block dark:invert">
+        </button>
+
+        <button id="boton-musica" type="button" aria-label="Reproducir música" aria-pressed="false"
+            class="boton-musica flotante-der fixed z-50 flex h-12 w-12 items-center justify-center rounded-full p-1
+                transition duration-300 hover:scale-110 focus-visible:scale-110
+                focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-texto">
+            <!-- Música parada -->
+            <img id="icono-play" src="media/img/notaSola.png" alt=""
+                class="h-full w-full object-contain dark:invert">
+            <!-- Música sonando -->
+            <img id="icono-pausa" src="media/img/notaSonando.png" alt=""
+                class="hidden h-full w-full object-contain dark:invert">
+        </button>
+
+        <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+        <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.4/howler.min.js"></script>
+        <script src="js/script.js"></script>
+        <script src="js/percutida.js"></script>
+    </body>
+</html>

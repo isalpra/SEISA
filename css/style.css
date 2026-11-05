@@ -2,47 +2,41 @@
 @layer theme, base, components, utilities;
 
 
-/* Los selectores o estilos de etiquetas (tag), en "base" */
 
-@layer base{
-    body{
 
-    }
-
-    a{
-
-    }
-    
-    h1{
-        
-    }
-
-}
 
 @layer base {
     .dark {
     --color-fondo: #28043d;
     --color-texto: #f2e8d3;
     --color-acento: #abb0ba;
-    }
-
-   
+  }
+  
+  :root {
+    /* Tamaño de la esquina y separación del borde: se cambian solo aquí */
+    --esquina: clamp(2.75rem, 7vw, 8rem);
+    --margen: clamp(0.5rem, 1.2vw, 1.25rem);
+    /* Alto de la cabecera sticky */
+    --cabecera: calc(4.5rem + 1px);
+  }
+  
+  
 }
-/* Los selectores por clase (.class), en "components" */
+
 
 
 @layer components {
-    .menu-desplegable {
-        animation: desplegar 0.25s ease-out;
-        transform-origin: top;
-    }
-
-    .menu-desplegable.cerrando {
-        animation: plegar 0.25s ease-in forwards;
-    }
-
-    .boton-categoria {
-      background-image: linear-gradient(var(--color-fondo), var(--color-fondo));
+  .menu-desplegable {
+    animation: desplegar 0.25s ease-out;
+    transform-origin: top;
+  }
+  
+  .menu-desplegable.cerrando {
+    animation: plegar 0.25s ease-in forwards;
+  }
+  
+  .boton-categoria {
+    background-image: linear-gradient(var(--color-fondo), var(--color-fondo));
       background-repeat: no-repeat;
       background-position: left center;
       background-size: 0% 100%;
@@ -73,21 +67,55 @@
     .boton-musica.sonando {
       animation: pulso 1.8s ease-out infinite;
     }
-
+    
     .modal-producto[open] {
       animation: aparecer-ficha 0.3s ease-out;
     }
+    
+    .marco-fondo {
+      position: fixed;
+      inset: var(--cabecera) 0 0 0;
+      z-index: -10;
+      pointer-events: none;
+      animation: aparecer-marco 0.8s ease-out both;
+    }
+    
+    .marco-esquina {
+      position: absolute;
+      width: var(--esquina);
+      height: auto;
+      max-width: none;
+    }
+    
+    .marco-esquina--sup-izq { top: var(--margen);    left: var(--margen); }
+    .marco-esquina--sup-der { top: var(--margen);    right: var(--margen); transform: scaleX(-1); }
+    .marco-esquina--inf-izq { bottom: var(--margen); left: var(--margen);  transform: scaleY(-1); }
+    .marco-esquina--inf-der { bottom: var(--margen); right: var(--margen); transform: rotate(180deg); }
+    
+    /* El contenido deja libre el ancho de la esquina a cada lado */
+    .contenido-marco {
+      padding-inline: calc(var(--margen) + var(--esquina) + 0.5rem);
+    }
+    
+    /* Botones flotantes: centrados en vertical en el espacio que queda bajo la cabecera */
+    .flotante-izq,
+    .flotante-der {
+      top: calc(var(--cabecera) + (100dvh - var(--cabecera)) / 2);
+      transform: translateY(-50%);
+    }
+    .flotante-izq { left: var(--margen); }
+    .flotante-der { right: var(--margen); }
 }
-
-
-
+  
+  
+  
 @keyframes aparecer-ficha {
   from { opacity: 0; transform: translateY(1.5rem) scale(0.96); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 @keyframes pulso {
-  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-acento) 60%, transparent); }
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-fondo) 92%, var(--color-texto)); }
   100% { box-shadow: 0 0 0 1rem transparent; }
 }
 
@@ -97,8 +125,13 @@
 }
 
 @keyframes plegar {
-  from { opacity: 1; transform: scaleY(1) translateY(0); }
-  to   { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
+from { opacity: 1; transform: scaleY(1) translateY(0); }
+to   { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
+}
+
+@keyframes aparecer-marco {
+from { opacity: 0; scale: 0.97; }
+to   { opacity: 1; scale: 1; }
 }
 
 
@@ -168,6 +201,13 @@
 }
 
 
+@media (prefers-reduced-motion: reduce) {
+  .marco-fondo { animation: none; }
+}
+
+@media (min-width: 48rem) {
+  :root { --cabecera: calc(5rem + 1px); }
+}
 /* ============================================================
    FIN: lo de arriba va DENTRO de @layer components { }
    ============================================================ */
