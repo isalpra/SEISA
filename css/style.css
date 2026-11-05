@@ -19,10 +19,19 @@
     /* Alto de la cabecera sticky */
     --cabecera: calc(4.5rem + 1px);
   }
-  
+   
   
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
 
 
 @layer components {
@@ -137,10 +146,8 @@ to   { opacity: 1; scale: 1; }
 
 /* ============================================================
    NOVEDADES / OFERTAS
-   Pega esto DENTRO de tu bloque  @layer components { ... }
    ============================================================ */
 
-/* Flecha del precio: línea fina con punta de flecha al final */
 .flecha-precio {
   position: relative;
   display: block;

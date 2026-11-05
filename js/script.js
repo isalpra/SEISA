@@ -1,5 +1,5 @@
 // ===== Modo claro / oscuro =====
-const raiz = document.documentElement; // <html>
+const raiz = document.documentElement; 
 const botonTema = document.querySelector('#boton-tema');
 
 function actualizarBotonTema() {
@@ -10,7 +10,7 @@ function actualizarBotonTema() {
   }
 }
 
-// Al cargar: ¿eligió oscuro la última vez?
+
 if (localStorage.getItem('tema') === 'oscuro') {
   raiz.classList.add('dark');
 }
@@ -34,7 +34,7 @@ function alternarMenu(abrir) {
     menu.classList.remove('hidden');
     menu.classList.add('flex');
   } else if (!menu.classList.contains('hidden')) {
-    // No se oculta aún: primero se reproduce la animación de salida
+    
     menu.classList.add('cerrando');
   }
   botonMenu.setAttribute('aria-expanded', abrir);
@@ -46,7 +46,7 @@ if (botonMenu && menu) {
     alternarMenu(botonMenu.getAttribute('aria-expanded') !== 'true');
   });
 
-  // Cuando termina la animación de salida, se oculta de verdad
+  
   menu.addEventListener('animationend', function (evento) {
     if (evento.animationName === 'plegar') {
       menu.classList.remove('cerrando');
@@ -55,7 +55,7 @@ if (botonMenu && menu) {
     }
   });
 
-  // Al pulsar un enlace en móvil, se cierra el menú
+ 
   menu.querySelectorAll('a').forEach(function (enlace) {
     enlace.addEventListener('click', function () {
       alternarMenu(false);
@@ -63,21 +63,20 @@ if (botonMenu && menu) {
   });
 }
 
-// ===== AOS (animaciones al hacer scroll) =====
+
 AOS.init();
 
-// ===== Tarjetas apiladas con GSAP + ScrollTrigger =====
-// Solo se ejecuta en index.html, donde existe la sección #categorias
+
 if (document.querySelector('#categorias')) {
   gsap.registerPlugin(ScrollTrigger);
 
   const tarjetas = gsap.utils.toArray('.tarjeta-categoria');
 
-  const PAUSA = 2;                  // tiempo con la tarjeta quieta antes de que entre la siguiente
-  const TRANSICION = 1;             // tiempo que tarda en subir la siguiente
-  const PANTALLAS_POR_UNIDAD = 0.6; // pantallas de scroll por cada unidad de tiempo
+  const PAUSA = 2;                  
+  const TRANSICION = 1;             
+  const PANTALLAS_POR_UNIDAD = 0.6; 
 
-  // La 2ª y la 3ª empiezan fuera de pantalla, por debajo
+  
   gsap.set(tarjetas.slice(1), { y: () => window.innerHeight });
 
   const lineaTiempo = gsap.timeline({ defaults: { ease: 'none' } });
@@ -89,7 +88,7 @@ if (document.querySelector('#categorias')) {
       .to(tarjeta, { y: 0, duration: TRANSICION }, inicio);
   });
 
-  // Pausa final para ver la última tarjeta antes de soltar el pin
+  
   lineaTiempo.to({}, { duration: PAUSA });
 
   ScrollTrigger.create({
@@ -118,7 +117,7 @@ if (formulario) {
 
 // ===== Música (Howler.js) =====
 const musica = new Howl({
-  src: ['media/audio/guitarrafondo.mp3'],   // cambiad por vuestro audio libre de derechos
+  src: ['media/audio/guitarrafondo.mp3'],  
   loop: true,
   volume: 0.5,
   onloaderror: function () {
@@ -166,22 +165,18 @@ if (botonMusica) {
     actualizarBotonMusica();
   });
 
-  // Al salir de la página: guardar posición y estado
   window.addEventListener('pagehide', function () {
     sessionStorage.setItem('musicaPosicion', musica.seek());
     sessionStorage.setItem('musicaSonando', sonando);
   });
 }
 
-// ============================================================
-// NOVEDADES: las fotos aparecen de una en una al hacer scroll
-// Añade esto al final de js/script.js
-// ============================================================
+
+
 (() => {
   const productos = document.querySelectorAll('.novedad');
   if (!productos.length) return;
 
-  // Navegadores muy antiguos: se muestran todos sin animar
   if (!('IntersectionObserver' in window)) {
     productos.forEach((p) => p.classList.add('visible'));
     return;
@@ -189,7 +184,6 @@ if (botonMusica) {
 
   const observador = new IntersectionObserver(
     (entradas) => {
-      // Si varios entran a la vez, se escalonan 0.3 s entre sí
       entradas
         .filter((e) => e.isIntersecting)
         .forEach((entrada, i) => {
@@ -203,3 +197,4 @@ if (botonMusica) {
 
   productos.forEach((p) => observador.observe(p));
 })();
+
