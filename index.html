@@ -91,7 +91,132 @@
 
     </div>
 </section>
-    <section id="novedades">
+<section id="novedades" aria-labelledby="titulo-novedades"
+          class="px-6 py-54 md:px-16 md:py-52 lg:px-24 lg:py-56">
+ 
+    <h2 id="titulo-novedades"
+        class="mb-12 text-center font-rotulo text-2xl md:mb-20 md:text-3xl">
+        Novedades/Ofertas
+    </h2>
+ 
+    <div class="mx-auto flex max-w-screen-2xl flex-col gap-12
+                md:grid md:grid-cols-2 md:gap-x-6 md:gap-y-16
+                lg:grid-cols-4 lg:gap-x-0 lg:gap-y-0">
+ 
+        <!-- ===== Grupo 1 (columna izquierda) ===== -->
+        <div class="contents md:flex md:flex-col md:gap-24 lg:mt-9">
+ 
+            <!-- Producto 1: retrato grande -->
+            <figure class="novedad w-[70%] self-start md:w-[70%]">
+                <div class="overflow-hidden bg-texto/10">
+                    <img src="img/electricapromocion.png" alt="Guitarra eléctrica" loading="lazy"
+                         class="novedad-img aspect-[2/3] w-full object-cover">
+                </div>
+                <figcaption class="mt-3 font-texto text-xs md:text-sm">
+                    <p class="border-b border-texto pb-1 text-center">Guitarra eléctrica</p>
+                    <p class="mt-2 flex items-center gap-2">
+                        <del><span class="sr-only">Precio anterior: </span>290€</del>
+                        <span class="flecha-precio" aria-hidden="true"></span>
+                        <ins class="no-underline"><span class="sr-only">Precio actual: </span>230€</ins>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+ 
+        <!-- ===== Grupo 2 ===== -->
+        <div class="contents md:flex md:flex-col md:gap-24">
+ 
+            <!-- Producto 2: cuadrada -->
+            <figure class="novedad w-[55%] self-end md:ml-[39%] md:w-[50%] md:self-start">
+                <div class="overflow-hidden bg-texto/10">
+                    <img src="img/medioclasica.jpg" alt="Guitarra eléctrica" loading="lazy"
+                         class="novedad-img aspect-square w-full object-cover">
+                </div>
+                <figcaption class="mt-3 font-texto text-xs md:text-sm">
+                    <p class="border-b border-texto pb-1 text-center">Guitarra acústica</p>
+                    <p class="mt-2 flex items-center gap-2">
+                        <del><span class="sr-only">Precio anterior: </span>215€</del>
+                        <span class="flecha-precio" aria-hidden="true"></span>
+                        <ins class="no-underline"><span class="sr-only">Precio actual: </span>170€</ins>
+                    </p>
+                </figcaption>
+            </figure>
+ 
+            <!-- Producto 3: retrato mediano -->
+            <figure class="novedad w-[60%] self-start md:ml-[5%] md:w-[50%]">
+                <div class="overflow-hidden bg-texto/10">
+                    <img src="img/pianoblanco.jpg" alt="Piano claro" loading="lazy"
+                         class="novedad-img aspect-[3/4] w-full object-cover">
+                </div>
+                <figcaption class="mt-3 font-texto text-xs md:text-sm">
+                    <p class="border-b border-texto pb-1 text-center">Piano claro</p>
+                    <p class="mt-2 flex items-center gap-2">
+                        <del><span class="sr-only">Precio anterior: </span>790€</del>
+                        <span class="flecha-precio" aria-hidden="true"></span>
+                        <ins class="no-underline"><span class="sr-only">Precio actual: </span>690€</ins>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+ 
+        <!-- ===== Grupo 3 ===== -->
+        <div class="contents md:flex md:flex-col md:gap-24 lg:mt-32">
+ 
+            <!-- Producto 4: violín 2x1 -->
+            <figure class="novedad w-[55%] self-end md:ml-[35%] md:w-[50%] md:self-start">
+                <div class="overflow-hidden bg-texto/10">
+                    <img src="img/violin.jpg" alt="Violín" loading="lazy"
+                         class="novedad-img aspect-square w-full object-cover">
+                </div>
+                <figcaption class="mt-3 font-texto text-xs md:text-sm">
+                    <p class="border-b border-texto pb-1 text-center">Violín</p>
+                    <p class="mt-2 flex items-center gap-2">
+                        <span>2 x 1</span>
+                        <span class="flecha-precio" aria-hidden="true"></span>
+                        <span><span class="sr-only">Precio: </span>199€</span>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+ 
+        <!-- ===== Grupo 4 (columna derecha) ===== -->
+        <div class="contents md:flex md:flex-col md:gap-24 lg:mt-8">
+ 
+            <!-- Producto 5: algo más ancha -->
+            <figure class="novedad w-[65%] self-start md:ml-[39%] md:w-[60%]">
+                <div class="overflow-hidden bg-texto/10">
+                    <img src="img/pianopared.jpg" alt="Ukelele" loading="lazy"
+                         class="novedad-img aspect-[10/9] w-full object-cover">
+                </div>
+                <figcaption class="mt-3 font-texto text-xs md:text-sm">
+                    <p class="border-b border-texto pb-1 text-center">Piano de pared</p>
+                    <p class="mt-2 flex items-center gap-2">
+                        <span>2 x 1</span>
+                        <span class="flecha-precio" aria-hidden="true"></span>
+                        <span><span class="sr-only">Precio: </span>4.050€</span>
+                    </p>
+                </figcaption>
+            </figure>
+ 
+            <!-- Producto 6: cuadrada pequeña -->
+            <figure class="novedad w-[50%] self-end md:ml-[14%] md:w-[50%] md:self-start">
+                <div class="overflow-hidden bg-texto/10">
+                    <img src="img/tecladopiano.jpg" alt="Banjo" loading="lazy"
+                         class="novedad-img aspect-square w-full object-cover">
+                </div>
+                <figcaption class="mt-3 font-texto text-xs md:text-sm">
+                    <p class="border-b border-texto pb-1 text-center">Teclado</p>
+                    <p class="mt-2 flex items-center gap-2">
+                        <del><span class="sr-only">Precio anterior: </span>440€</del>
+                        <span class="flecha-precio" aria-hidden="true"></span>
+                        <ins class="no-underline"><span class="sr-only">Precio actual: </span>380€</ins>
+                    </p>
+                </figcaption>
+            </figure>
+        </div>
+ 
+    </div>
+</section>
     
     <button id="boton-tema" type="button" aria-label="Cambiar a modo oscuro" aria-pressed="false"
             class="fixed bottom-4 left-4 z-50 flex h-12 w-12 items-center justify-center rounded-full
@@ -128,13 +253,6 @@
     </svg>
     </button>
 
-
-    <section id="portada" class="min-h-screen">
-
-    </section>
-    <section id="novedades" class="min-h-screen">
-
-    </section>
     <section id="categorias" aria-labelledby="titulo-categorias"
          class="relative h-screen overflow-hidden">
         <h2 id="titulo-categorias" class="sr-only">Categorías</h2>
@@ -215,7 +333,7 @@
         </article>
     </section>
     <section id="informacion" aria-labelledby="titulo-informacion"
-         class="px-4 py-16 md:px-8 md:py-24 lg:px-12">
+        class="px-6 py-34 md:px-16 md:py-42 lg:px-24 lg:py-40">
         <h2 id="titulo-informacion"
             class="mb-12 text-center font-rotulo text-3xl uppercase md:mb-16 md:text-5xl">
             Información

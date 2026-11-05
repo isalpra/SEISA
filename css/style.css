@@ -102,6 +102,72 @@
 }
 
 
+/* ============================================================
+   NOVEDADES / OFERTAS
+   Pega esto DENTRO de tu bloque  @layer components { ... }
+   ============================================================ */
 
-/* =====================================
-   PORTADA - SEISA
+/* Flecha del precio: línea fina con punta de flecha al final */
+.flecha-precio {
+  position: relative;
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+
+.flecha-precio::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 6px solid currentColor;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+}
+
+/* Zoom suave de la foto al pasar el ratón / enfocar */
+.novedad-img {
+  transition: transform 0.5s ease;
+}
+
+.novedad:hover .novedad-img,
+.novedad:focus-within .novedad-img {
+  transform: scale(1.05);
+}
+
+/* Aparición una a una.
+   Solo se ocultan si hay JavaScript (si no, se verían siempre). */
+@media (scripting: enabled) {
+  .novedad {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.96);
+    transition:
+      opacity 0.8s ease var(--retraso, 0s),
+      transform 0.8s ease var(--retraso, 0s);
+  }
+
+  .novedad.visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  .novedad {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .novedad-img {
+    transition: none;
+  }
+}
+
+
+/* ============================================================
+   FIN: lo de arriba va DENTRO de @layer components { }
+   ============================================================ */
