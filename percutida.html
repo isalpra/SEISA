@@ -18,7 +18,6 @@
             @custom-variant dark (&:where(.dark, .dark *));
 
             @theme static {
-                /* Colores del modo claro. Los del modo oscuro están en css/styles.css */
                 --color-fondo: #f4ecdc;
                 --color-texto: #382c25;
                 --color-acento: #8f2d00;
@@ -31,7 +30,6 @@
 
 
     <body class="flex min-h-dvh flex-col bg-fondo text-texto md:h-dvh md:overflow-hidden">
-        <!-- Marco decorativo: una sola imagen de esquina, reflejada y girada -->
         <div class="marco-fondo" aria-hidden="true">
             <img src="media/img/marcoesquina.png" alt="" class="marco-esquina marco-esquina--sup-izq dark:invert">
             <img src="media/img/marcoesquina.png" alt="" class="marco-esquina marco-esquina--sup-der dark:invert">
@@ -139,10 +137,10 @@
             class="flotante-izq fixed z-50 flex h-12 w-12 items-center justify-center rounded-full p-1
                 transition duration-300 hover:scale-110 focus-visible:scale-110
                 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-acento">
-            <!-- Se ve en modo claro -->
+           
             <img src="media/img/lunaicono.png" alt=""
                 class="h-full w-full object-contain dark:hidden">
-            <!-- Se ve en modo oscuro -->
+          
             <img src="media/img/solicono.png" alt=""
                 class="hidden h-full w-full object-contain dark:block dark:invert">
         </button>
@@ -151,10 +149,10 @@
             class="boton-musica flotante-der fixed z-50 flex h-12 w-12 items-center justify-center rounded-full p-1
                 transition duration-300 hover:scale-110 focus-visible:scale-110
                 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-texto">
-            <!-- Música parada -->
+          
             <img id="icono-play" src="media/img/notaSola.png" alt=""
                 class="h-full w-full object-contain dark:invert">
-            <!-- Música sonando -->
+          
             <img id="icono-pausa" src="media/img/notaSonando.png" alt=""
                 class="hidden h-full w-full object-contain dark:invert">
         </button>

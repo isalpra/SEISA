@@ -2,9 +2,6 @@
 @layer theme, base, components, utilities;
 
 
-
-
-
 @layer base {
     .dark {
     --color-fondo: #28043d;
@@ -13,7 +10,6 @@
   }
   
   :root {
-    /* Tamaño de la esquina y separación del borde: se cambian solo aquí */
     --esquina: clamp(2.75rem, 7vw, 8rem);
     --margen: clamp(0.5rem, 1.2vw, 1.25rem);
     /* Alto de la cabecera sticky */
@@ -101,12 +97,12 @@ html {
     .marco-esquina--inf-izq { bottom: var(--margen); left: var(--margen);  transform: scaleY(-1); }
     .marco-esquina--inf-der { bottom: var(--margen); right: var(--margen); transform: rotate(180deg); }
     
-    /* El contenido deja libre el ancho de la esquina a cada lado */
+  
     .contenido-marco {
       padding-inline: calc(var(--margen) + var(--esquina) + 0.5rem);
     }
     
-    /* Botones flotantes: centrados en vertical en el espacio que queda bajo la cabecera */
+  
     .flotante-izq,
     .flotante-der {
       top: calc(var(--cabecera) + (100dvh - var(--cabecera)) / 2);
@@ -144,9 +140,7 @@ to   { opacity: 1; scale: 1; }
 }
 
 
-/* ============================================================
-   NOVEDADES / OFERTAS
-   ============================================================ */
+
 
 .flecha-precio {
   position: relative;
@@ -167,7 +161,7 @@ to   { opacity: 1; scale: 1; }
   border-bottom: 3px solid transparent;
 }
 
-/* Zoom suave de la foto al pasar el ratón / enfocar */
+
 .novedad-img {
   transition: transform 0.5s ease;
 }
@@ -177,8 +171,7 @@ to   { opacity: 1; scale: 1; }
   transform: scale(1.05);
 }
 
-/* Aparición una a una.
-   Solo se ocultan si hay JavaScript (si no, se verían siempre). */
+
 @media (scripting: enabled) {
   .novedad {
     opacity: 0;
@@ -194,7 +187,7 @@ to   { opacity: 1; scale: 1; }
   }
 }
 
-/* Respeta a quien prefiere menos movimiento */
+
 @media (prefers-reduced-motion: reduce) {
   .novedad {
     opacity: 1 !important;
@@ -215,6 +208,4 @@ to   { opacity: 1; scale: 1; }
 @media (min-width: 48rem) {
   :root { --cabecera: calc(5rem + 1px); }
 }
-/* ============================================================
-   FIN: lo de arriba va DENTRO de @layer components { }
-   ============================================================ */
+
