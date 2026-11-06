@@ -84,7 +84,7 @@
   .flotante-izq { left: var(--margen); }
   .flotante-der { right: var(--margen); }
 
-  /* Etiqueta de precio con flecha */
+
   .flecha-precio {
     position: relative;
     display: block;
