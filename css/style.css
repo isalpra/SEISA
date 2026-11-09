@@ -209,3 +209,57 @@ to   { opacity: 1; scale: 1; }
   :root { --cabecera: calc(5rem + 1px); }
 }
 
+@layer components {
+    .footer-seisa {
+        min-height: 430px;
+    }
+
+    .footer-ilustracion {
+        height: 115%;
+        opacity: 0.18;
+        filter: invert(1);
+        transition: opacity 0.4s ease;
+    }
+
+    .footer-seisa:hover .footer-ilustracion {
+        opacity: 0.27;
+    }
+
+    .footer-enlace {
+        transition: gap 0.3s ease, opacity 0.3s ease;
+    }
+
+    .footer-enlace:hover {
+        gap: 1rem;
+        opacity: 0.7;
+    }
+
+    @media (max-width: 767px) {
+        .footer-seisa {
+            min-height: 0;
+        }
+
+        .footer-ilustracion {
+            width: 100%;
+            height: 65%;
+            top: auto;
+            bottom: 0;
+            right: -15%;
+            transform: none;
+            opacity: 0.13;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .footer-ilustracion,
+        .footer-enlace {
+            transition: none;
+        }
+    }
+}
+
+
+.footer-logo {
+    max-height: 65px;
+    object-position: left center;
+}
