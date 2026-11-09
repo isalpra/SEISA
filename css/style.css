@@ -1,119 +1,147 @@
-
 @layer theme, base, components, utilities;
 
 
+
 @layer base {
-    .dark {
+  
+  .dark {
     --color-fondo: #28043d;
     --color-texto: #f2e8d3;
     --color-acento: #abb0ba;
   }
-  
+
   :root {
     --esquina: clamp(2.75rem, 7vw, 8rem);
     --margen: clamp(0.5rem, 1.2vw, 1.25rem);
     /* Alto de la cabecera sticky */
     --cabecera: calc(4.5rem + 1px);
   }
-   
-  
-}
 
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
   html {
-    scroll-behavior: auto;
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--cabecera);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
 }
 
 
 @layer components {
+
+  
   .menu-desplegable {
     animation: desplegar 0.25s ease-out;
     transform-origin: top;
   }
-  
+
   .menu-desplegable.cerrando {
     animation: plegar 0.25s ease-in forwards;
   }
+
   
-  .boton-categoria {
-    background-image: linear-gradient(var(--color-fondo), var(--color-fondo));
-      background-repeat: no-repeat;
-      background-position: left center;
-      background-size: 0% 100%;
-      transition: background-size 0.35s ease, color 0.35s ease, transform 0.25s ease;
-    }
-    
-    .boton-categoria:hover,
-    .boton-categoria:focus-visible {
-      background-size: 100% 100%;
-      color: var(--color-texto);
-      transform: translateY(-3px);
-    }
-    
-    .boton-categoria:active {
-      transform: translateY(0);
-    }
-    
-    .boton-categoria .flecha {
-      display: inline-block;
-      transition: transform 0.25s ease;
-    }
-    
-    .boton-categoria:hover .flecha,
-    .boton-categoria:focus-visible .flecha {
-      transform: translateX(0.4rem);
-    }
-    
-    .boton-musica.sonando {
-      animation: pulso 1.8s ease-out infinite;
-    }
-    
-    .modal-producto[open] {
-      animation: aparecer-ficha 0.3s ease-out;
-    }
-    
-    .marco-fondo {
-      position: fixed;
-      inset: var(--cabecera) 0 0 0;
-      z-index: -10;
-      pointer-events: none;
-      animation: aparecer-marco 0.8s ease-out both;
-    }
-    
-    .marco-esquina {
-      position: absolute;
-      width: var(--esquina);
-      height: auto;
-      max-width: none;
-    }
-    
-    .marco-esquina--sup-izq { top: var(--margen);    left: var(--margen); }
-    .marco-esquina--sup-der { top: var(--margen);    right: var(--margen); transform: scaleX(-1); }
-    .marco-esquina--inf-izq { bottom: var(--margen); left: var(--margen);  transform: scaleY(-1); }
-    .marco-esquina--inf-der { bottom: var(--margen); right: var(--margen); transform: rotate(180deg); }
-    
+  .boton-musica.sonando {
+    animation: pulso 1.8s ease-out infinite;
+  }
+
   
-    .contenido-marco {
-      padding-inline: calc(var(--margen) + var(--esquina) + 0.5rem);
-    }
-    
+  .modal-producto[open] {
+    animation: aparecer-ficha 0.3s ease-out;
+  }
+
   
-    .flotante-izq,
-    .flotante-der {
-      top: calc(var(--cabecera) + (100dvh - var(--cabecera)) / 2);
-      transform: translateY(-50%);
+  .marco-fondo {
+    position: fixed;
+    inset: var(--cabecera) 0 0 0;
+    z-index: -10;
+    pointer-events: none;
+    animation: aparecer-marco 0.8s ease-out both;
+  }
+
+  .marco-esquina {
+    position: absolute;
+    width: var(--esquina);
+    height: auto;
+    max-width: none;
+  }
+
+  .marco-esquina--sup-izq { top: var(--margen);    left: var(--margen); }
+  .marco-esquina--sup-der { top: var(--margen);    right: var(--margen); transform: scaleX(-1); }
+  .marco-esquina--inf-izq { bottom: var(--margen); left: var(--margen);  transform: scaleY(-1); }
+  .marco-esquina--inf-der { bottom: var(--margen); right: var(--margen); transform: rotate(180deg); }
+
+  .contenido-marco {
+    padding-inline: calc(var(--margen) + var(--esquina) + 0.5rem);
+  }
+
+  
+  .flotante-izq,
+  .flotante-der {
+    top: calc(var(--cabecera) + (100dvh - var(--cabecera)) / 2);
+    transform: translateY(-50%);
+  }
+  .flotante-izq { left: var(--margen); }
+  .flotante-der { right: var(--margen); }
+
+
+  .flecha-precio {
+    position: relative;
+    display: block;
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .flecha-precio::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 6px solid currentColor;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+  }
+
+
+  .novedad-img {
+    transition: transform 0.5s ease;
+  }
+
+  .novedad:hover .novedad-img,
+  .novedad:focus-within .novedad-img {
+    transform: scale(1.05);
+  }
+
+  @media (scripting: enabled) {
+    .novedad {
+      opacity: 0;
+      transform: translateY(2rem) scale(0.96);
+      transition:
+        opacity 0.8s ease var(--retraso, 0s),
+        transform 0.8s ease var(--retraso, 0s);
     }
-    .flotante-izq { left: var(--margen); }
-    .flotante-der { right: var(--margen); }
+
+    .novedad.visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .novedad {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+    .novedad-img { transition: none; }
+    .marco-fondo { animation: none; }
+  }
 }
-  
-  
-  
+
+
+
 @keyframes aparecer-ficha {
   from { opacity: 0; transform: translateY(1.5rem) scale(0.96); }
   to   { opacity: 1; transform: translateY(0) scale(1); }
@@ -130,83 +158,13 @@ html {
 }
 
 @keyframes plegar {
-from { opacity: 1; transform: scaleY(1) translateY(0); }
-to   { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
+  from { opacity: 1; transform: scaleY(1) translateY(0); }
+  to   { opacity: 0; transform: scaleY(0.9) translateY(-0.5rem); }
 }
 
 @keyframes aparecer-marco {
-from { opacity: 0; scale: 0.97; }
-to   { opacity: 1; scale: 1; }
-}
-
-
-
-
-.flecha-precio {
-  position: relative;
-  display: block;
-  flex: 1;
-  height: 1px;
-  background: currentColor;
-}
-
-.flecha-precio::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  border-left: 6px solid currentColor;
-  border-top: 3px solid transparent;
-  border-bottom: 3px solid transparent;
-}
-
-
-.novedad-img {
-  transition: transform 0.5s ease;
-}
-
-.novedad:hover .novedad-img,
-.novedad:focus-within .novedad-img {
-  transform: scale(1.05);
-}
-
-
-@media (scripting: enabled) {
-  .novedad {
-    opacity: 0;
-    transform: translateY(2rem) scale(0.96);
-    transition:
-      opacity 0.8s ease var(--retraso, 0s),
-      transform 0.8s ease var(--retraso, 0s);
-  }
-
-  .novedad.visible {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .novedad {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-  }
-
-  .novedad-img {
-    transition: none;
-  }
-}
-
-
-@media (prefers-reduced-motion: reduce) {
-  .marco-fondo { animation: none; }
-}
-
-@media (min-width: 48rem) {
-  :root { --cabecera: calc(5rem + 1px); }
+  from { opacity: 0; scale: 0.97; }
+  to   { opacity: 1; scale: 1; }
 }
 
 @layer components {

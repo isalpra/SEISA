@@ -1,5 +1,5 @@
 // ===== Modo claro / oscuro =====
-const raiz = document.documentElement; 
+const raiz = document.documentElement;
 const botonTema = document.querySelector('#boton-tema');
 
 function actualizarBotonTema() {
@@ -9,7 +9,6 @@ function actualizarBotonTema() {
     botonTema.setAttribute('aria-label', oscuro ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
   }
 }
-
 
 if (localStorage.getItem('tema') === 'oscuro') {
   raiz.classList.add('dark');
@@ -24,7 +23,7 @@ if (botonTema) {
   });
 }
 
-// ===== Menú móvil =====
+
 const botonMenu = document.querySelector('#boton-menu');
 const menu = document.querySelector('#menu-principal');
 
@@ -34,7 +33,6 @@ function alternarMenu(abrir) {
     menu.classList.remove('hidden');
     menu.classList.add('flex');
   } else if (!menu.classList.contains('hidden')) {
-    
     menu.classList.add('cerrando');
   }
   botonMenu.setAttribute('aria-expanded', abrir);
@@ -46,7 +44,6 @@ if (botonMenu && menu) {
     alternarMenu(botonMenu.getAttribute('aria-expanded') !== 'true');
   });
 
-  
   menu.addEventListener('animationend', function (evento) {
     if (evento.animationName === 'plegar') {
       menu.classList.remove('cerrando');
@@ -55,7 +52,6 @@ if (botonMenu && menu) {
     }
   });
 
- 
   menu.querySelectorAll('a').forEach(function (enlace) {
     enlace.addEventListener('click', function () {
       alternarMenu(false);
@@ -72,11 +68,10 @@ if (document.querySelector('#categorias')) {
 
   const tarjetas = gsap.utils.toArray('.tarjeta-categoria');
 
-  const PAUSA = 2;                  
-  const TRANSICION = 1;             
-  const PANTALLAS_POR_UNIDAD = 0.6; 
+  const PAUSA = 2;
+  const TRANSICION = 1;
+  const PANTALLAS_POR_UNIDAD = 0.6;
 
-  
   gsap.set(tarjetas.slice(1), { y: () => window.innerHeight });
 
   const lineaTiempo = gsap.timeline({ defaults: { ease: 'none' } });
@@ -88,7 +83,6 @@ if (document.querySelector('#categorias')) {
       .to(tarjeta, { y: 0, duration: TRANSICION }, inicio);
   });
 
-  
   lineaTiempo.to({}, { duration: PAUSA });
 
   ScrollTrigger.create({
@@ -102,7 +96,7 @@ if (document.querySelector('#categorias')) {
   });
 }
 
-// ===== Formulario de contacto =====
+
 const formulario = document.querySelector('#formulario-contacto');
 const estadoFormulario = document.querySelector('#estado-formulario');
 
@@ -115,9 +109,9 @@ if (formulario) {
   });
 }
 
-// ===== Música (Howler.js) =====
+
 const musica = new Howl({
-  src: ['media/audio/guitarrafondo.mp3'],  
+  src: ['media/audio/guitarrafondo.mp3'],
   loop: true,
   volume: 0.5,
   onloaderror: function () {
@@ -140,7 +134,6 @@ function actualizarBotonMusica() {
 }
 
 if (botonMusica) {
-  // Al cargar la página: retomar donde se quedó
   const posicionGuardada = parseFloat(sessionStorage.getItem('musicaPosicion')) || 0;
   const estabaSonando = sessionStorage.getItem('musicaSonando') === 'true';
 
@@ -172,7 +165,6 @@ if (botonMusica) {
 }
 
 
-
 (() => {
   const productos = document.querySelectorAll('.novedad');
   if (!productos.length) return;
@@ -198,3 +190,59 @@ if (botonMusica) {
   productos.forEach((p) => observador.observe(p));
 })();
 
+
+(() => {
+  const DURACION = 1400; // milisegundos: más alto = más lento
+
+
+  const suavizar = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+  let animacion = null;
+
+  function irA(posicionFinal) {
+    const inicio = window.scrollY;
+    const distancia = posicionFinal - inicio;
+    const horaInicio = performance.now();
+
+    if (animacion) cancelAnimationFrame(animacion);
+
+    function paso(ahora) {
+      const progreso = Math.min((ahora - horaInicio) / DURACION, 1);
+      window.scrollTo(0, inicio + distancia * suavizar(progreso));
+      if (progreso < 1) {
+        animacion = requestAnimationFrame(paso);
+      } else {
+        animacion = null;
+      }
+    }
+    animacion = requestAnimationFrame(paso);
+  }
+
+  ['wheel', 'touchstart', 'keydown'].forEach((tipo) => {
+    window.addEventListener(tipo, () => {
+      if (animacion) {
+        cancelAnimationFrame(animacion);
+        animacion = null;
+      }
+    }, { passive: true });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach((enlace) => {
+    enlace.addEventListener('click', (evento) => {
+      const id = enlace.getAttribute('href');
+      const destino = id === '#' ? document.body : document.querySelector(id);
+      if (!destino) return;
+
+      evento.preventDefault();
+
+      const cabecera = document.querySelector('header');
+      const altoCabecera = cabecera ? cabecera.offsetHeight : 0;
+      const arriba = destino.getBoundingClientRect().top + window.scrollY;
+
+      // #portada es el inicio de la página: se sube del todo
+      const posicion = id === '#portada' ? 0 : arriba - altoCabecera;
+
+      irA(Math.max(0, posicion));
+    });
+  });
+})();
